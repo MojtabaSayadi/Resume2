@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Resume2.Data\Resume2.Data.csproj" />
+  </ItemGroup>
+
 </Project>
