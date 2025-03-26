@@ -1,7 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using Resume2.Data.Context;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+#region Add Db Context
+builder.Services.AddDbContext<Resume2Context>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Myconnection"));
+});
+#endregion
 
 var app = builder.Build();
 
