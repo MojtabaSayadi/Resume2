@@ -1,5 +1,9 @@
 using Microsoft.EntityFrameworkCore;
+using Resume2.Core.Services.Implementations;
+using Resume2.Core.Services.Interfaces;
 using Resume2.Data.Context;
+using Resume2.Data.Repositories;
+using Resume2.Domain.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +15,9 @@ builder.Services.AddDbContext<Resume2Context>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Myconnection"));
 });
 #endregion
+
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 var app = builder.Build();
 
