@@ -19,41 +19,45 @@ namespace Resume2.Core.Services.Implementations
         public void AddUser(User user)
         {
             userRpository.Add(user);
+            SaveUser();
         }
 
         public void DeleteUser(int id)
         {
-            throw new NotImplementedException();
+            userRpository.Delete(id);
+            SaveUser();
         }
 
         public void DeleteUsers(User user)
         {
-            throw new NotImplementedException();
+            userRpository.Delete(user);
+            SaveUser();
         }
 
         public User GetUserById(int id)
         {
-            throw new NotImplementedException();
+            return userRpository.GetById(id);
         }
 
         public List<User> GetUsers()
         {
-            throw new NotImplementedException();
+            return userRpository.GetAll();
         }
 
         public bool IsExist(int Id)
         {
-            throw new NotImplementedException();
+            return userRpository.Equals(GetUserById(Id));
         }
 
         public void SaveUser()
         {
-            throw new NotImplementedException();
+            userRpository.Save();
         }
 
         public void UpdateUser(User user)
         {
-            throw new NotImplementedException();
+            userRpository.Update(user);
+            SaveUser();
         }
     }
 }
