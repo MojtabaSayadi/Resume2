@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -19,5 +20,15 @@ namespace Resume2.Data.Context
         }
         public DbSet<User> users { get; set; }
         public DbSet<WebMainInfo> webMainInfo { get; set; }
+
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+
+        //    foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+        //    {
+        //        relationship.DeleteBehavior = DeleteBehavior.Restrict;
+        //    }
+        //    base.OnModelCreating(modelBuilder);
+        //}
     }
 }

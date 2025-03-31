@@ -46,7 +46,8 @@ namespace Resume2.Core.Services.Implementations
 
         public bool IsExist(int Id)
         {
-            return userRpository.Equals(GetUserById(Id));
+            //return userRpository.Equals(GetUserById(Id));
+            return userRpository.IsExist(Id);
         }
 
         public void SaveUser()

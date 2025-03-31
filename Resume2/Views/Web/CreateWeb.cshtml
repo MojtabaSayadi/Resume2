@@ -1,0 +1,35 @@
+﻿@model WebMainInfo
+<div>
+	<form asp-action="CreateWeb" asp-controller="Web" method="post">
+		<div class="form-group">
+			<label> User name </label>
+			<input asp-for="FullName" class="form-control" placeholder="Enter FullName " />
+			<br />
+
+			<span asp-validation-for="FullName" class="text-danger">    </span>
+
+		</div>
+		<div class="form-group mt-2">
+			<label> Explain1 </label>
+			<input asp-for="Explain1" class="form-control" placeholder="Enter Explaine1 " />
+			<br />
+			<span asp-validation-for="Explain1" class="text-danger">   </span>
+
+		</div>
+		<div class="form-group mt-2">
+			<label> Explain2 </label>
+			<input asp-for="Explain2" class="form-control" placeholder="Enter Explaine2 " />
+			<br />
+			<span asp-validation-for="Explain2" class="text-danger">   </span>
+
+		</div>
+		<div class="container mt-2">
+			<button class="btn btn-secondary" type="submit"> Save </button>
+			<a href="/ShowWeb" class="btn btn-info"> Back </a>
+
+		</div>
+
+
+	</form>
+
+</div>

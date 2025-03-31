@@ -1,0 +1,64 @@
+﻿@model List<WebMainInfo>
+<div>
+	<table class="table table-bordered">
+		<tr>
+			<th>
+				#
+			</th>
+			<th>
+				FullName
+			</th>
+			<th>
+				Explain1
+			</th>
+			<th>
+				Explain2
+			</th>
+			<td>
+				<a href="\CreateWeb" class="btn btn-info ">
+					Add Web
+
+				</a>
+			</td>
+		</tr>
+		@if (Model.Any())
+		{
+			foreach (var item in Model)
+			{
+				<tr>
+					<td>
+						@item.Id
+					</td>
+					<td>
+						@item.FullName
+					</td>
+					<td>
+						@item.Explain1
+					</td>
+					<td>
+						@item.Explain2
+					</td>
+					<td>
+						<a class="btn btn-warning" href="\EditWeb\@item.Id">
+							Edit Web
+						</a>
+						<button class="btn btn-danger" onclick="confirm('@item.Id','@item.FullName') ">
+							Delete Web
+						</button>
+
+					</td>
+
+				</tr>
+			}
+		}
+		else
+		{
+			<tr style="text-align:center ">
+				<td colspan="4">
+					No Data Found
+				</td>
+			</tr>
+		}
+	</table>
+
+</div>

@@ -11,37 +11,37 @@ namespace Resume2.Core.Services.Implementations
 {
     public class WebMainInfoService : IWebMainInfoService
     {
-        private IWebMainInfoService webService ;
-        public WebMainInfoService(IWebMainInfoService _webService)
+        private IWebMainInfoRepository webService ;
+        public WebMainInfoService(IWebMainInfoRepository _webService)
         {
             webService = _webService;
         }
         public void AddWeb(WebMainInfo webMainInfo)
         {
-            webService.AddWeb(webMainInfo);
+            webService.Add(webMainInfo);
             SaveWeb();
         }
 
         public void DeleteWeb(int id)
         {
-            webService.DeleteWeb(id);
+            webService.Delete(id);
             SaveWeb();
         }
 
         public void DeleteWebs(WebMainInfo webMainInfo)
         {
-            webService.DeleteWebs(webMainInfo);
+            webService.Delete(webMainInfo);
             SaveWeb();
         }
 
         public WebMainInfo GetWebById(int id)
         {
-            return webService.GetWebById(id);
+            return webService.GetById(id);
         }
 
         public List<WebMainInfo> GetWebs()
         {
-            return webService.GetWebs();
+            return webService.GetAll();
         }
 
         public bool IsExist(int Id)
@@ -51,12 +51,12 @@ namespace Resume2.Core.Services.Implementations
 
         public void SaveWeb()
         {
-            webService.SaveWeb();
+            webService.Save();
         }
 
         public void UpdateWeb(WebMainInfo webMainInfo)
         {
-            webService.UpdateWeb(webMainInfo);
+            webService.Update(webMainInfo);
             SaveWeb();
         }
     }
