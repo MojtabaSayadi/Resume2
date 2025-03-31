@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 using Resume2.Domain.Models.Auth;
+using Resume2.Domain.Models.Web;
 
 namespace Resume2.Data.Context
 {
@@ -17,5 +18,6 @@ namespace Resume2.Data.Context
             
         }
         public DbSet<User> users { get; set; }
+        public DbSet<WebMainInfo> webMainInfo { get; set; }
     }
 }

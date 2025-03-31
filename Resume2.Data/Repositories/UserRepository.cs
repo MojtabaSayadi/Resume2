@@ -45,6 +45,11 @@ namespace Resume2.Data.Repositories
             return context.users.Find(id);
         }
 
+        public bool IsExist(int Id)
+        {
+            return context.users.Any(u => u.Id == Id);
+        }
+
         public void Save()
         {
             context.SaveChanges();

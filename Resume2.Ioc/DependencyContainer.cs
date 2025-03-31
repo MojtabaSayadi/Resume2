@@ -17,8 +17,8 @@ namespace Resume2.Ioc
         {
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUserRepository, UserRepository>();
-            //services.AddScoped<IAddressRepository, AddressRepository>();
-            //services.AddScoped<IAddressService, AddressService>();
+            services.AddScoped<IWebMainInfoRepository, WebMainInfoRepository>();
+            services.AddScoped<IWebMainInfoService, WebMainInfoService>();
 
         }
     }

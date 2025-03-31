@@ -10,6 +10,7 @@ namespace Resume2.Domain.Interfaces
     public interface IUserRepository
     {
         User GetById(int id);// find
+        bool IsExist(int Id);
         List<User> GetAll();// select *
         void Add(User user);// insert
         void Update(User user);// update
