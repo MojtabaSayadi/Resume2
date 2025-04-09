@@ -6,57 +6,80 @@ using System.Threading.Tasks;
 using Resume2.Core.Services.Interfaces;
 using Resume2.Domain.Interfaces;
 using Resume2.Domain.Models.Web;
+using Resume2.Domain.ViewModels;
 
 namespace Resume2.Core.Services.Implementations
 {
     public class WebMainInfoService : IWebMainInfoService
     {
-        private IWebMainInfoRepository webService ;
+        private IWebMainInfoRepository webRepository;
         public WebMainInfoService(IWebMainInfoRepository _webService)
         {
-            webService = _webService;
+            webRepository = _webService;
         }
         public void AddWeb(WebMainInfo webMainInfo)
         {
-            webService.Add(webMainInfo);
+            webRepository.Add(webMainInfo);
             SaveWeb();
         }
 
         public void DeleteWeb(int id)
         {
-            webService.Delete(id);
+            webRepository.Delete(id);
             SaveWeb();
         }
 
         public void DeleteWebs(WebMainInfo webMainInfo)
         {
-            webService.Delete(webMainInfo);
+            webRepository.Delete(webMainInfo);
             SaveWeb();
         }
 
         public WebMainInfo GetWebById(int id)
         {
-            return webService.GetById(id);
+            return webRepository.GetById(id);
+        }
+
+        public MyInfoOnWebViewModel GetWebInfoViewModel()
+        {
+            WebMainInfo webMainInfo = webRepository.GetWebInfo();
+            if (webMainInfo != null)
+            {
+                MyInfoOnWebViewModel result = new MyInfoOnWebViewModel()
+                {
+                    AboutMe = webMainInfo.AboutMe,
+                    FullName = webMainInfo.FullName,
+                    ImageName = webMainInfo.Avatar,
+                    Major = webMainInfo.Major,
+                    ShortDescription = webMainInfo.ShortDescription,
+                };
+                return result;
+
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public List<WebMainInfo> GetWebs()
         {
-            return webService.GetAll();
+            return webRepository.GetAll();
         }
 
         public bool IsExist(int Id)
         {
-            return webService.IsExist(Id);
+            return webRepository.IsExist(Id);
         }
 
         public void SaveWeb()
         {
-            webService.Save();
+            webRepository.Save();
         }
 
         public void UpdateWeb(WebMainInfo webMainInfo)
         {
-            webService.Update(webMainInfo);
+            webRepository.Update(webMainInfo);
             SaveWeb();
         }
     }

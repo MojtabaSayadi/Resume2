@@ -11,6 +11,7 @@ namespace Resume2.Domain.Interfaces
     public interface IWebMainInfoRepository
     {
         WebMainInfo GetById(int id);// find
+        WebMainInfo GetWebInfo();
         bool IsExist(int Id);
         List<WebMainInfo> GetAll();// select *
         void Add(WebMainInfo webMainInfo);// insert

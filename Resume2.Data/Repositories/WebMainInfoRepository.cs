@@ -42,6 +42,11 @@ namespace Resume2.Data.Repositories
             return context.webMainInfo.Find(id);
         }
 
+        public WebMainInfo GetWebInfo()
+        {
+            return context.webMainInfo.FirstOrDefault();
+        }
+
         public bool IsExist(int Id)
         {
             return context.webMainInfo.Any(x => x.Id == Id);

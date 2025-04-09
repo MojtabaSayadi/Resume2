@@ -14,15 +14,18 @@ namespace Resume2.Domain.Models.Web
         [Required]
         [MaxLength(100,ErrorMessage =" name is too long")]
         public string FullName { get; set; }
-        [MaxLength(200, ErrorMessage = " it is too long")]
-        public string Explain1 { get; set; }
+        [MaxLength(100, ErrorMessage = " name is too long")]
+        public string Major { get; set; }
 
-        [MaxLength(1000, ErrorMessage = " it is too long")]
-        public string Explain2 { get; set; }
+
+        [MaxLength(2000, ErrorMessage = " it is too long")]
+        public string ShortDescription { get; set; }
+
+        [MaxLength(20, ErrorMessage = " it is too long")]
+        public string Avatar { get; set; }
 
         [MaxLength(5000, ErrorMessage = " it is too long")]
         public string AboutMe { get; set; }
-        public string InstagarmAdd {  get; set; }
-        public string GitHubAdd {  get; set; }
+       
     }
 }

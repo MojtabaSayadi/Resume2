@@ -88,12 +88,12 @@ namespace Resume2.Controllers
                 if (!webMainInfo.FullName.Equals(model.FullName))
                     webMainInfo.FullName = model.FullName;
                 isChanged = true;
-                if (!webMainInfo.Explain1.Equals(model.Explain1))
-                    webMainInfo.Explain1 = model.Explain1;
-                isChanged = true;
-                if (!webMainInfo.Explain2.Equals(model.Explain2))
-                    webMainInfo.Explain2 = model.Explain2;
-                isChanged = true;
+                //if (!webMainInfo.Explain1.Equals(model.Explain1))
+                //    webMainInfo.Explain1 = model.Explain1;
+                //isChanged = true;
+                //if (!webMainInfo.Explain2.Equals(model.Explain2))
+                //    webMainInfo.Explain2 = model.Explain2;
+                //isChanged = true;
 
 
 
