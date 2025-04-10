@@ -21,6 +21,7 @@ namespace Resume2.Data.Context
         public DbSet<User> users { get; set; }
         public DbSet<WebMainInfo> webMainInfo { get; set; }
         public DbSet<WebSocial> webSocials { get; set; }
+        public DbSet<WebSkills> webSkills { get; set; }
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{
