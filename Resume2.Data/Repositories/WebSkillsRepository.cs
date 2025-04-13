@@ -21,42 +21,42 @@ namespace Resume2.Data.Repositories
 
         public void Add(WebSkills webSkills)
         {
-            throw new NotImplementedException();
+            context.webSkills.Add(webSkills);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            context.webSkills.Remove(GetById(id));
         }
 
         public void Delete(WebSkills webSkills)
         {
-            throw new NotImplementedException();
+            context.webSkills.Remove(webSkills);
         }
 
         public List<WebSkills> GetAll()
         {
-            throw new NotImplementedException();
+            return context.webSkills.ToList();
         }
 
         public WebSkills GetById(int id)
         {
-            throw new NotImplementedException();
+            return context.webSkills.Find(id);
         }
 
         public bool IsExist(int Id)
         {
-            throw new NotImplementedException();
+            return context.webSkills.Any(x => x.Id == Id);
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+           context.SaveChanges();
         }
 
         public void Update(WebSkills webSkills)
         {
-            throw new NotImplementedException();
+            context.Update(webSkills);
         }
     }
 }

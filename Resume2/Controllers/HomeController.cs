@@ -11,14 +11,16 @@ namespace Resume2.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private IWebMainInfoService webMainInfoService;
+        private IWebSkillsService webSkillsService;
         private IWebSocialService webSocialService;
 
 
-        public HomeController(IWebSocialService  _webSocialService, IWebMainInfoService _webMainInfoService,ILogger<HomeController> logger)
+        public HomeController(IWebSkillsService _webSkillsService, IWebSocialService  _webSocialService, IWebMainInfoService _webMainInfoService,ILogger<HomeController> logger)
         {
             _logger = logger;
             webMainInfoService = _webMainInfoService;
             webSocialService = _webSocialService;
+            webSkillsService = _webSkillsService;
         }
 
         public IActionResult Index()
@@ -27,6 +29,8 @@ namespace Resume2.Controllers
             ViewBag.WebInfo=myinfo;
             List<WebSocial> MySocial = webSocialService.GetWebSocials();
             ViewBag.Social = MySocial;
+            List<WebSkills> MySkills = webSkillsService.GetWebSkills();
+            ViewBag.Skills = MySkills;
 
             return View();
         }

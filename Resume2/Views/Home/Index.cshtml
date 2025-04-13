@@ -1,650 +1,654 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+	ViewData["Title"] = "Home Page";
 
-    MyInfoOnWebViewModel myinfo = new MyInfoOnWebViewModel();
-    List<WebSocial> socials = new List<WebSocial>();
+	MyInfoOnWebViewModel myinfo = new MyInfoOnWebViewModel();
+	List<WebSocial> socials = new List<WebSocial>();
+	List<WebSkills> skills = new List<WebSkills>();
 
-    if (ViewBag.WebInfo!=null)
-    {
-        myinfo = ViewBag.WebInfo as MyInfoOnWebViewModel;
-    }
-    if (ViewBag.Social != null)
-    {
-        socials = ViewBag.Social as List<WebSocial>;
+	if (ViewBag.WebInfo != null)
+	{
+		myinfo = ViewBag.WebInfo as MyInfoOnWebViewModel;
+	}
+	if (ViewBag.Social != null)
+	{
+		socials = ViewBag.Social as List<WebSocial>;
 
-    }
+	}
+	if (ViewBag.Skills != null)
+	{
+		skills = ViewBag.Skills as List<WebSkills>;
+	}
 
 }
 
 <div class="alx-scroll-wrap">
-    <!--Content STARTs-->
-    <div id="alx-preloader">
-        <div class="cssload-thecube">
-            <div class="cssload-cube cssload-c1"></div>
-            <div class="cssload-cube cssload-c2"></div>
-            <div class="cssload-cube cssload-c4"></div>
-            <div class="cssload-cube cssload-c3"></div>
-        </div>
-    </div>
-    <header>
-        <div class="alx-logo"><a href="#page1"><img class="alx-logo__dark" src="images/logo.svg" alt="logo"><img class="alx-logo__white" src="~/templatefile/images/logo-white.svg" alt="logo"></a></div>
-        <div class="alx-right-wrap">
-            <div class="alx-social-links">
-                @if( socials.Count() > 0) 
-                {
-                    <ul>
-                        @foreach (var item in socials)
-                        {
-                            <li><a href="@item.Url"><i class="@item.Image"></i></a></li>
-                        }
-                        
-                        
-                    </ul>
-                }
-                
-            </div><a class="alx-burger" href="#"><span></span></a>
-        </div>
-    </header>
-    <div id="alx-pagepiling">
-        <section class="alx-vertical-middle pp-scrollable alx-bg-img" data-image="images/bgr.jpg" data-tooltipsection="First screen">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="alx-heading alx-text-center">
-                            <h1 class="alx-heading__title">@myinfo.FullName</h1>
-                            <div class="alx-heading__pretitle"><i class="fa fa-camera-retro"></i>@myinfo.Major</div>
-                            <div class="alx-heading__zigzag">
-                                <svg x="0px" y="0px" viewBox="0 0 100 19.5">
-                                    <g>
-                                        <polygon points="79.3,18 69.6,8.3 60,18 50.3,8.3 40.6,18 31,8.3 21.3,18 11.7,8.3 3.4,16.5 0.6,13.7 11.7,2.7 21.3,12.3 31,2.7 								40.6,12.3 50.3,2.7 60,12.3 69.6,2.7 79.3,12.3 88.9,2.7 100,13.6 97.2,16.4 89,8.3 "></polygon>
-                                    </g>
-                                </svg>
-                            </div>
-                            <div class="alx-heading__description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</div>
-                        </div>
-                        <div class="alx-btns-section alx-text-center"><a class="alx-btn" href="#page6">نمونه کارهای من</a></div>
-                    </div>
-                    <div class="col-lg-6 offset-lg-1"></div>
-                </div>
-            </div>
-            <canvas class="alx-canvas" id="pretty-bg"></canvas>
-        </section>
-        <section class="alx-vertical-middle alx-dark-section pp-scrollable alx-bg-img" data-image="images/bgd1.jpg">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 order-lg-12">
-                        <div class="alx-person-image alx-dots-style">
-                            <img class="img-responsive alx-tilt" src="image/@myinfo.ImageName" alt="">
-                            <h3 class="alx-person-image__title alx-text-center">6 سال تجربه کاری</h3>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 alx-style" data-style="margin: 50px 0">
-                        <div class="alx-heading">
-                            <h2 class="alx-heading__title">درباره من</h2>
-                            <div class="alx-heading__zigzag">
-                                <svg x="0px" y="0px" viewBox="0 0 100 19.5">
-                                    <g>
-                                        <polygon points="79.3,18 69.6,8.3 60,18 50.3,8.3 40.6,18 31,8.3 21.3,18 11.7,8.3 3.4,16.5 0.6,13.7 11.7,2.7 21.3,12.3 31,2.7 								40.6,12.3 50.3,2.7 60,12.3 69.6,2.7 79.3,12.3 88.9,2.7 100,13.6 97.2,16.4 89,8.3 "></polygon>
-                                    </g>
-                                </svg>
-                            </div>
-                            <div class="alx-heading__description">@myinfo.AboutMe </div>
-                            <div class="alx-heading__pretitle alx-style" data-style="margin-top: 20px"><i class="fa fa-diamond"></i>کارهای با کیفیت بالا و استاندارد های جهانی</div>
-                        </div><a class="alx-btn alx-btn-primary" href="#page9">مشتری من شو !</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="alx-vertical-middle pp-scrollable alx-bg-img" data-image="images/bg2.jpg" data-tooltipsection="Second screen">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-5 alx-style" data-style="margin: 50px 0">
-                        <div class="alx-heading">
-                            <div class="alx-heading__pretitle"><i class="fa fa-diamond"></i>تخصص های من</div>
-                            <h2 class="alx-heading__title">بهترین خدمات من</h2>
-                            <div class="alx-heading__zigzag">
-                                <svg x="0px" y="0px" viewBox="0 0 100 19.5">
-                                    <g>
-                                        <polygon points="79.3,18 69.6,8.3 60,18 50.3,8.3 40.6,18 31,8.3 21.3,18 11.7,8.3 3.4,16.5 0.6,13.7 11.7,2.7 21.3,12.3 31,2.7 								40.6,12.3 50.3,2.7 60,12.3 69.6,2.7 79.3,12.3 88.9,2.7 100,13.6 97.2,16.4 89,8.3 "></polygon>
-                                    </g>
-                                </svg>
-                            </div>
-                            <div class="alx-heading__description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد</div>
-                        </div><a class="alx-btn" href="#page9">شروع یک پروژه</a>
-                    </div>
-                    <div class="col-lg-6 offset-lg-1">
-                        <div class="alx-services alx-dots-style" data-interval="7000">
-                            <div class="alx-services__container">
-                                <div class="alx-services__item">
-                                    <div class="alx-services__item__wrap">
-                                        <div class="alx-services__item__main">
-                                            <i class="fa fa-film"></i>
-                                            <h4 class="alx-services__item__title">ویرایش ویدیو</h4>
-                                        </div>
-                                        <div class="alx-services__item__description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </div>
-                                        <div class="alx-services__item__opacityicon"><i class="fa fa-film"></i></div>
-                                    </div>
-                                </div>
-                                <div class="alx-services__item">
-                                    <div class="alx-services__item__wrap">
-                                        <div class="alx-services__item__main">
-                                            <i class="fa fa-camera-retro"></i>
-                                            <h4 class="alx-services__item__title">عکاس</h4>
-                                        </div>
-                                        <div class="alx-services__item__description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </div>
-                                        <div class="alx-services__item__opacityicon"><i class="fa fa-camera-retro"></i></div>
-                                    </div>
-                                </div>
-                                <div class="alx-services__item">
-                                    <div class="alx-services__item__wrap">
-                                        <div class="alx-services__item__main">
-                                            <i class="fa fa-diamond"></i>
-                                            <h4 class="alx-services__item__title">طراح</h4>
-                                        </div>
-                                        <div class="alx-services__item__description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </div>
-                                        <div class="alx-services__item__opacityicon"><i class="fa fa-diamond"></i></div>
-                                    </div>
-                                </div>
-                                <div class="alx-services__item">
-                                    <div class="alx-services__item__wrap">
-                                        <div class="alx-services__item__main">
-                                            <i class="fa fa-feed"></i>
-                                            <h4 class="alx-services__item__title">مدیریت</h4>
-                                        </div>
-                                        <div class="alx-services__item__description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </div>
-                                        <div class="alx-services__item__opacityicon"><i class="fa fa-feed"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="alx-services__container">
-                                <div class="alx-services__item">
-                                    <div class="alx-services__item__wrap">
-                                        <div class="alx-services__item__main">
-                                            <i class="fa fa-wordpress"></i>
-                                            <h4 class="alx-services__item__title">وردپرس</h4>
-                                        </div>
-                                        <div class="alx-services__item__description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </div>
-                                        <div class="alx-services__item__opacityicon"><i class="fa fa-wordpress"></i></div>
-                                    </div>
-                                </div>
-                                <div class="alx-services__item">
-                                    <div class="alx-services__item__wrap">
-                                        <div class="alx-services__item__main">
-                                            <i class="fa fa-css3"></i>
-                                            <h4 class="alx-services__item__title">CSS&HTML</h4>
-                                        </div>
-                                        <div class="alx-services__item__description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </div>
-                                        <div class="alx-services__item__opacityicon"><i class="fa fa-css3"></i></div>
-                                    </div>
-                                </div>
-                                <div class="alx-services__item">
-                                    <div class="alx-services__item__wrap">
-                                        <div class="alx-services__item__main">
-                                            <i class="fa fa-opencart"></i>
-                                            <h4 class="alx-services__item__title">اپن کارت</h4>
-                                        </div>
-                                        <div class="alx-services__item__description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </div>
-                                        <div class="alx-services__item__opacityicon"><i class="fa fa-opencart"></i></div>
-                                    </div>
-                                </div>
-                                <div class="alx-services__item">
-                                    <div class="alx-services__item__wrap">
-                                        <div class="alx-services__item__main">
-                                            <i class="fa fa-connectdevelop"></i>
-                                            <h4 class="alx-services__item__title">پشتیبانی</h4>
-                                        </div>
-                                        <div class="alx-services__item__description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </div>
-                                        <div class="alx-services__item__opacityicon"><i class="fa fa-connectdevelop"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="alx-vertical-middle pp-scrollable alx-dark-section alx-bg-img" data-image="images/bgd3.jpg">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-5 alx-style" data-style="margin: 50px 0">
-                        <div class="alx-heading">
-                            <h2 class="alx-heading__title">مهارت های من</h2>
-                            <div class="alx-heading__zigzag">
-                                <svg x="0px" y="0px" viewBox="0 0 100 19.5">
-                                    <g>
-                                        <polygon points="79.3,18 69.6,8.3 60,18 50.3,8.3 40.6,18 31,8.3 21.3,18 11.7,8.3 3.4,16.5 0.6,13.7 11.7,2.7 21.3,12.3 31,2.7 								40.6,12.3 50.3,2.7 60,12.3 69.6,2.7 79.3,12.3 88.9,2.7 100,13.6 97.2,16.4 89,8.3 "></polygon>
-                                    </g>
-                                </svg>
-                            </div>
-                            <div class="alx-heading__description">من کارم را خوب و به موقع انجام می دهم - این اصل غیرقابل انکار، مهمتر از آن است که حتی نمی تواند پول باشد.<br><strong>فقط نمونه کارها من را بررسی کنید و بیایید با هم کار کنیم!</strong></div>
-                        </div>
-                        <div class="alx-skills-list">
-                            <ul>
-                                <li><span>01</span>طراحی وب سایت با وردپرس</li>
-                                <li><span>02</span>طراحی لندینگ پیج</li>
-                                <li><span>03</span>بهینه سازی سئو</li>
-                                <li><span>04</span>طراحی رسپانسیو</li>
-                                <li><span>05</span>طراحی صفحات اصلی</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-5 offset-lg-2 align-self-center">
-                        <div class="alx-skills">
-                            <div class="alx-skills__header">
-                                <div class="alx-skills__title">لوگو / برندسازی</div>
-                                <div class="alx-skills__count">80%</div>
-                            </div>
-                            <div class="alx-skills__body">
-                                <div class="alx-skills__bar" data-skills="80%"></div>
-                            </div>
-                        </div>
-                        <div class="alx-skills">
-                            <div class="alx-skills__header">
-                                <div class="alx-skills__title">کدنویسی</div>
-                                <div class="alx-skills__count">90%</div>
-                            </div>
-                            <div class="alx-skills__body">
-                                <div class="alx-skills__bar" data-skills="90%"></div>
-                            </div>
-                        </div>
-                        <div class="alx-skills">
-                            <div class="alx-skills__header">
-                                <div class="alx-skills__title">وردپرس</div>
-                                <div class="alx-skills__count">70%</div>
-                            </div>
-                            <div class="alx-skills__body">
-                                <div class="alx-skills__bar" data-skills="70%"></div>
-                            </div>
-                        </div>
-                        <div class="alx-skills">
-                            <div class="alx-skills__header">
-                                <div class="alx-skills__title">HTML5 / CSS3</div>
-                                <div class="alx-skills__count">60%</div>
-                            </div>
-                            <div class="alx-skills__body">
-                                <div class="alx-skills__bar" data-skills="60%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="alx-vertical-middle pp-scrollable alx-bg-img" data-image="images/bgl3.jpg">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-5">
-                        <div class="alx-heading">
-                            <div class="alx-heading__pretitle"><i class="fa fa-money"></i>نرخ بازای ه3 ساعت فقط 25 هزار تومان</div>
-                            <h2 class="alx-heading__title">قیمت</h2>
-                            <div class="alx-heading__zigzag">
-                                <svg x="0px" y="0px" viewBox="0 0 100 19.5">
-                                    <g>
-                                        <polygon points="79.3,18 69.6,8.3 60,18 50.3,8.3 40.6,18 31,8.3 21.3,18 11.7,8.3 3.4,16.5 0.6,13.7 11.7,2.7 21.3,12.3 31,2.7 								40.6,12.3 50.3,2.7 60,12.3 69.6,2.7 79.3,12.3 88.9,2.7 100,13.6 97.2,16.4 89,8.3 "></polygon>
-                                    </g>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="alx-price">
-                            <div class="alx-price__title">طراحی وب سایت</div>
-                            <div class="alx-price__price">
-                                <span>از</span>
-                                <p>900/000 ت</p>
-                            </div>
-                        </div>
-                        <div class="alx-price">
-                            <div class="alx-price__title">طراحی وب سایت شرکتی</div>
-                            <div class="alx-price__price">
-                                <span>از</span>
-                                <p>900/000 ت</p>
-                            </div>
-                        </div>
-                        <div class="alx-price">
-                            <div class="alx-price__title">طراحی وب سایت خدماتی</div>
-                            <div class="alx-price__price">
-                                <span>از</span>
-                                <p>900/000 ت</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-5 offset-lg-2 align-self-end">
-                        <div class="alx-price">
-                            <div class="alx-price__title">طراحی وب سایت فروشگاهی</div>
-                            <div class="alx-price__price">
-                                <span>از</span>
-                                <p>900/000 ت</p>
-                            </div>
-                        </div>
-                        <div class="alx-price">
-                            <div class="alx-price__title">طراحی وب سایت های شخصی</div>
-                            <div class="alx-price__price">
-                                <span>از</span>
-                                <p>900/000 ت</p>
-                            </div>
-                        </div>
-                        <div class="alx-price">
-                            <div class="alx-price__title">طراحی صفحه اصلی</div>
-                            <div class="alx-price__price">
-                                <span>از</span>
-                                <p>900/000 ت</p>
-                            </div>
-                        </div>
-                        <div class="alx-price">
-                            <div class="alx-price__title">طراحی صفحات داخلی</div>
-                            <div class="alx-price__price">
-                                <span>از</span>
-                                <p>900/000 ت</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="alx-vertical-middle pp-scrollable alx-dark-section alx-bg-img" data-image="images/bgd3.jpg">
-            <div class="container">
-                <div class="col-lg-12">
-                    <ul class="alx-portfolio-control alx-portfolio__nav alx-text-left">
-                        <li class="alx-active" data-filter="*">همه</li>
-                        <li data-filter=".alx-f-branding">برندسازی</li>
-                        <li data-filter=".alx-f-web">وب</li>
-                        <li data-filter=".alx-f-graphic">گرافیک</li>
-                        <li data-filter=".alx-f-logo">لوگو</li>
-                        <li data-filter=".alx-f-photography"> عکاسی</li>
-                    </ul>
-                </div>
-                <div class="alx-portfolio-items alx-layout-isotope alx-isotope-gap" data-grid="4">
-                    <div class="alx-isotope-item alx-f-branding alx-f-photography">
-                        <div class="alx-portfolio-item alx-portfolio-item__style1">
-                            <a class="alx-img-gallery" href="~/templatefile/images/portfolio/1.jpg"></a>
-                            <div class="alx-portfolio-item-image">
-                                <div class="alx-bg-img" data-image="images/portfolio/1.jpg"></div>
-                            </div>
-                            <div class="alx-portfolio-item-details">
-                                <h4>طراحی وبسایت خلاقانه</h4>
-                                <p>خلاقانه</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="alx-isotope-item alx-f-graphic">
-                        <div class="alx-portfolio-item alx-portfolio-item__style1">
-                            <a class="alx-img-gallery" href="~/templatefile/images/portfolio/2.jpg"></a>
-                            <div class="alx-portfolio-item-image">
-                                <div class="alx-bg-img" data-image="images/portfolio/2.jpg"></div>
-                            </div>
-                            <div class="alx-portfolio-item-details">
-                                <h4>طراحی سایت جدید</h4>
-                                <p>خلاقانه</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="alx-isotope-item alx-f-web">
-                        <div class="alx-portfolio-item alx-portfolio-item__style1">
-                            <a class="alx-img-gallery" href="~/templatefile/images/portfolio/3.jpg"></a>
-                            <div class="alx-portfolio-item-image">
-                                <div class="alx-bg-img" data-image="images/portfolio/3.jpg"></div>
-                            </div>
-                            <div class="alx-portfolio-item-details">
-                                <h4>لوگو آرایشگاه</h4>
-                                <p>خلاقانه</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="alx-isotope-item alx-f-logo alx-f-photography">
-                        <div class="alx-portfolio-item alx-portfolio-item__style1">
-                            <a class="alx-img-gallery" href="~/templatefile/images/portfolio/4.jpg"></a>
-                            <div class="alx-portfolio-item-image">
-                                <div class="alx-bg-img" data-image="images/portfolio/3.jpg"></div>
-                            </div>
-                            <div class="alx-portfolio-item-details">
-                                <h4>طراحی سایت جدید</h4>
-                                <p>خلاقانه</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="alx-isotope-item alx-f-branding">
-                        <div class="alx-portfolio-item alx-portfolio-item__style1">
-                            <a class="alx-img-gallery" href="~/templatefile/images/portfolio/5.jpg"></a>
-                            <div class="alx-portfolio-item-image">
-                                <div class="alx-bg-img" data-image="images/portfolio/5.jpg"></div>
-                            </div>
-                            <div class="alx-portfolio-item-details">
-                                <h4>منحنی ساده</h4>
-                                <p>خلاقانه</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="alx-isotope-item alx-f-web">
-                        <div class="alx-portfolio-item alx-portfolio-item__style1">
-                            <a class="alx-img-gallery" href="~/templatefile/images/portfolio/6.jpg"></a>
-                            <div class="alx-portfolio-item-image">
-                                <div class="alx-bg-img" data-image="images/portfolio/6.jpg"></div>
-                            </div>
-                            <div class="alx-portfolio-item-details">
-                                <h4>رویکرد مدرن</h4>
-                                <p>خلاقانه</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="alx-isotope-item alx-f-branding">
-                        <div class="alx-portfolio-item alx-portfolio-item__style1">
-                            <a class="alx-img-gallery" href="~/templatefile/images/portfolio/7.jpg"></a>
-                            <div class="alx-portfolio-item-image">
-                                <div class="alx-bg-img" data-image="images/portfolio/7.jpg"></div>
-                            </div>
-                            <div class="alx-portfolio-item-details">
-                                <h4>برش جدید</h4>
-                                <p>خلاقانه</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="alx-isotope-item alx-f-graphic alx-f-web alx-f-photography">
-                        <div class="alx-portfolio-item alx-portfolio-item__style1">
-                            <a class="alx-img-gallery" href="~/templatefile/images/portfolio/8.jpg"></a>
-                            <div class="alx-portfolio-item-image">
-                                <div class="alx-bg-img" data-image="images/portfolio/8.jpg"></div>
-                            </div>
-                            <div class="alx-portfolio-item-details">
-                                <h4>وب سایت جذاب</h4>
-                                <p>خلاقانه</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="alx-vertical-middle pp-scrollable alx-bg-img" data-image="images/bg2.jpg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="alx-heading">
-                            <h2 class="alx-heading__title">نظرات مشتریان</h2>
-                            <div class="alx-heading__zigzag">
-                                <svg x="0px" y="0px" viewBox="0 0 100 19.5">
-                                    <g>
-                                        <polygon points="79.3,18 69.6,8.3 60,18 50.3,8.3 40.6,18 31,8.3 21.3,18 11.7,8.3 3.4,16.5 0.6,13.7 11.7,2.7 21.3,12.3 31,2.7 								40.6,12.3 50.3,2.7 60,12.3 69.6,2.7 79.3,12.3 88.9,2.7 100,13.6 97.2,16.4 89,8.3 "></polygon>
-                                    </g>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="alx-testimonials">
-                        <div class="alx-testimonials__slides">
-                            <div class="alx-testimonials__item">
-                                <img src="~/templatefile/images/review1.jpg" alt="">
-                                <div class="alx-testimonials__content">
-                                    <div class="alx-testimonials__item__review"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></div>
-                                    <div class="alx-testimonials__item__name">نازنین رافعی</div>
-                                    <div class="alx-testimonials__item__text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</div>
-                                </div>
-                            </div>
-                            <div class="alx-testimonials__item">
-                                <img src="~/templatefile/images/review2.jpg" alt="">
-                                <div class="alx-testimonials__content">
-                                    <div class="alx-testimonials__item__review"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
-                                    <div class="alx-testimonials__item__name">معین زارع</div>
-                                    <div class="alx-testimonials__item__text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</div>
-                                </div>
-                            </div>
-                            <div class="alx-testimonials__item">
-                                <img src="~/templatefile/images/review3.jpg" alt="">
-                                <div class="alx-testimonials__content">
-                                    <div class="alx-testimonials__item__review"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></div>
-                                    <div class="alx-testimonials__item__name">آرش خادم</div>
-                                    <div class="alx-testimonials__item__text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="alx-slider__nav">
-                            <div class="alx-slider__nav__prev">
-                                <div class="alx-slider__nav__next__icon"><i class="fa fa-angle-double-left"></i></div>
-                            </div>
-                            <div class="alx-slider__nav__dots"></div>
-                            <div class="alx-slider__nav__next">
-                                <div class="alx-slider__nav__next__icon"><i class="fa fa-angle-double-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="alx-vertical-middle alx-dark-section pp-scrollable alx-bg-img" data-image="images/bgd5.jpg">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-5 alx-style" data-style="margin: 50px 0">
-                        <div class="alx-heading">
-                            <h2 class="alx-heading__title">مشتریان من</h2>
-                            <div class="alx-heading__zigzag">
-                                <svg x="0px" y="0px" viewBox="0 0 100 19.5">
-                                    <g>
-                                        <polygon points="79.3,18 69.6,8.3 60,18 50.3,8.3 40.6,18 31,8.3 21.3,18 11.7,8.3 3.4,16.5 0.6,13.7 11.7,2.7 21.3,12.3 31,2.7 								40.6,12.3 50.3,2.7 60,12.3 69.6,2.7 79.3,12.3 88.9,2.7 100,13.6 97.2,16.4 89,8.3 "></polygon>
-                                    </g>
-                                </svg>
-                            </div>
-                            <div class="alx-heading__description">من از هر فرصتی برای ایجاد مشارکت تجاری بلند مدت با شرکت هایی که در بخش خود رهبر هستند استفاده می کنم. من به منظور ارائه بهترین راه حل های موجود به مشتریان ، من با شرکای شبکه خود از نزدیک همکاری می کنم.</div>
-                        </div><a class="alx-btn alx-btn-primary" href="#">مشتری من شو</a>
-                    </div>
-                    <div class="col-lg-6 offset-lg-1">
-                        <div class="alx-services alx-services__partners alx-dots-style" data-interval="7000">
-                            <div class="alx-services__container">
-                                <div class="alx-services__item">
-                                    <div class="alx-services__item__wrap"><img src="~/templatefile/images/partner.png" alt=""></div>
-                                </div>
-                                <div class="alx-services__item">
-                                    <div class="alx-services__item__wrap"><img src="~/templatefile/images/partner2.png" alt=""></div>
-                                </div>
-                                <div class="alx-services__item">
-                                    <div class="alx-services__item__wrap"><img src="~/templatefile/images/partner3.png" alt=""></div>
-                                </div>
-                                <div class="alx-services__item">
-                                    <div class="alx-services__item__wrap"><img src="~/templatefile/images/partner4.png" alt=""></div>
-                                </div>
-                                <div class="alx-services__item">
-                                    <div class="alx-services__item__wrap"><img src="~/templatefile/images/partner5.png" alt=""></div>
-                                </div>
-                                <div class="alx-services__item">
-                                    <div class="alx-services__item__wrap"><img src="~/templatefile/images/partner6.png" alt=""></div>
-                                </div>
-                            </div>
-                            <div class="alx-services__container">
-                                <div class="alx-services__item">
-                                    <div class="alx-services__item__wrap"><img src="~/templatefile/images/partner6.png" alt=""></div>
-                                </div>
-                                <div class="alx-services__item">
-                                    <div class="alx-services__item__wrap"><img src="~/templatefile/images/partner.png" alt=""></div>
-                                </div>
-                                <div class="alx-services__item">
-                                    <div class="alx-services__item__wrap"><img src="~/templatefile/images/partner2.png" alt=""></div>
-                                </div>
-                                <div class="alx-services__item">
-                                    <div class="alx-services__item__wrap"><img src="~/templatefile/images/partner4.png" alt=""></div>
-                                </div>
-                                <div class="alx-services__item">
-                                    <div class="alx-services__item__wrap"><img src="~/templatefile/images/partner5.png" alt=""></div>
-                                </div>
-                                <div class="alx-services__item">
-                                    <div class="alx-services__item__wrap"><img src="~/templatefile/images/partner3.png" alt=""></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="alx-vertical-middle pp-scrollable alx-bg-img" data-image="images/bgl5.jpg">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-5">
-                        <div class="alx-heading">
-                            <h2 class="alx-heading__title">سلام برسان</h2>
-                            <div class="alx-heading__zigzag">
-                                <svg x="0px" y="0px" viewBox="0 0 100 19.5">
-                                    <g>
-                                        <polygon points="79.3,18 69.6,8.3 60,18 50.3,8.3 40.6,18 31,8.3 21.3,18 11.7,8.3 3.4,16.5 0.6,13.7 11.7,2.7 21.3,12.3 31,2.7 								40.6,12.3 50.3,2.7 60,12.3 69.6,2.7 79.3,12.3 88.9,2.7 100,13.6 97.2,16.4 89,8.3 "></polygon>
-                                    </g>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="alx-icon">
-                            <div class="alx-icon__icon"><span><i class="fa fa-phone"></i></span></div>
-                            <div class="alx-icon__text">
-                                <h5>تماس با من در هر زمان</h5>
-                                <p>+754-554-54-34</p>
-                            </div>
-                        </div>
-                        <div class="alx-icon">
-                            <div class="alx-icon__icon"><span><i class="fa fa-envelope"></i></span></div>
-                            <div class="alx-icon__text">
-                                <h5>ایمیل من</h5><a href="mailto:brainiaktheme@gmail.com">Office@domian.com</a>
-                            </div>
-                        </div>
-                        <div class="alx-icon">
-                            <div class="alx-icon__icon"><span><i class="fa fa-home"></i></span></div>
-                            <div class="alx-icon__text">
-                                <h5>آدرس</h5>
-                                <p>ایران، استان خراسان رضوی</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-8">
-                        <form class="alx-contact-form" action="#">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="alx-input-group">
-                                        <input name="name" type="text" required placeholder="نام شما *"><i class="fa fa-user-o"></i>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="alx-input-group">
-                                        <input name="email" type="email" required placeholder="ایمیل شما *"><i class="fa fa-at"></i>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="alx-input-group">
-                                        <textarea name="message" rows="6" required placeholder="پیغام *"></textarea><i class="fa fa-commenting-o"></i>
-                                    </div>
-                                    <div class="alx-success-msg hide">
-                                        <p>پیغام با موفقیت ارسال شد</p>
-                                    </div>
-                                    <input class="alx-btn" type="submit" value="ارسال پیغام">
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-    <div class="alx-lang-change">
-        <ul>
-            <li class="current-lang"><a href="#">فارسی</a></li>
-            <li><a href="#">EN</a></li>
-            <li><a href="#">Rus</a></li>
-        </ul>
-    </div>
-    <div class="alx-copyright">
-        <p><span>©</span>Gnusmas 2019</p>
-    </div>
+	<!--Content STARTs-->
+	<div id="alx-preloader">
+		<div class="cssload-thecube">
+			<div class="cssload-cube cssload-c1"></div>
+			<div class="cssload-cube cssload-c2"></div>
+			<div class="cssload-cube cssload-c4"></div>
+			<div class="cssload-cube cssload-c3"></div>
+		</div>
+	</div>
+	<header>
+		<div class="alx-logo"><a href="#page1"><img class="alx-logo__dark" src="images/logo.svg" alt="logo"><img class="alx-logo__white" src="~/templatefile/images/logo-white.svg" alt="logo"></a></div>
+		<div class="alx-right-wrap">
+			<div class="alx-social-links">
+				@if (socials.Count() > 0)
+				{
+					<ul>
+						@foreach (var item in socials)
+						{
+							<li><a href="@item.Url"><i class="@item.Image"></i></a></li>
+						}
+
+
+					</ul>
+				}
+
+			</div><a class="alx-burger" href="#"><span></span></a>
+		</div>
+	</header>
+	<div id="alx-pagepiling">
+		<section class="alx-vertical-middle pp-scrollable alx-bg-img" data-image="images/bgr.jpg" data-tooltipsection="First screen">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-8">
+						<div class="alx-heading alx-text-center">
+							<h1 class="alx-heading__title">@myinfo.FullName</h1>
+							<div class="alx-heading__pretitle"><i class="fa fa-camera-retro"></i>@myinfo.Major</div>
+							<div class="alx-heading__zigzag">
+								<svg x="0px" y="0px" viewBox="0 0 100 19.5">
+									<g>
+										<polygon points="79.3,18 69.6,8.3 60,18 50.3,8.3 40.6,18 31,8.3 21.3,18 11.7,8.3 3.4,16.5 0.6,13.7 11.7,2.7 21.3,12.3 31,2.7 								40.6,12.3 50.3,2.7 60,12.3 69.6,2.7 79.3,12.3 88.9,2.7 100,13.6 97.2,16.4 89,8.3 "></polygon>
+									</g>
+								</svg>
+							</div>
+							<div class="alx-heading__description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</div>
+						</div>
+						<div class="alx-btns-section alx-text-center"><a class="alx-btn" href="#page6">نمونه کارهای من</a></div>
+					</div>
+					<div class="col-lg-6 offset-lg-1"></div>
+				</div>
+			</div>
+			<canvas class="alx-canvas" id="pretty-bg"></canvas>
+		</section>
+		<section class="alx-vertical-middle alx-dark-section pp-scrollable alx-bg-img" data-image="images/bgd1.jpg">
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-lg-6 order-lg-12">
+						<div class="alx-person-image alx-dots-style">
+							<img class="img-responsive alx-tilt" src="image/@myinfo.ImageName" alt="">
+							<h3 class="alx-person-image__title alx-text-center">6 سال تجربه کاری</h3>
+						</div>
+					</div>
+					<div class="col-lg-6 alx-style" data-style="margin: 50px 0">
+						<div class="alx-heading">
+							<h2 class="alx-heading__title">درباره من</h2>
+							<div class="alx-heading__zigzag">
+								<svg x="0px" y="0px" viewBox="0 0 100 19.5">
+									<g>
+										<polygon points="79.3,18 69.6,8.3 60,18 50.3,8.3 40.6,18 31,8.3 21.3,18 11.7,8.3 3.4,16.5 0.6,13.7 11.7,2.7 21.3,12.3 31,2.7 								40.6,12.3 50.3,2.7 60,12.3 69.6,2.7 79.3,12.3 88.9,2.7 100,13.6 97.2,16.4 89,8.3 "></polygon>
+									</g>
+								</svg>
+							</div>
+							<div class="alx-heading__description">@myinfo.AboutMe </div>
+							<div class="alx-heading__pretitle alx-style" data-style="margin-top: 20px"><i class="fa fa-diamond"></i>کارهای با کیفیت بالا و استاندارد های جهانی</div>
+						</div><a class="alx-btn alx-btn-primary" href="#page9">مشتری من شو !</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="alx-vertical-middle pp-scrollable alx-bg-img" data-image="images/bg2.jpg" data-tooltipsection="Second screen">
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-lg-5 alx-style" data-style="margin: 50px 0">
+						<div class="alx-heading">
+							<div class="alx-heading__pretitle"><i class="fa fa-diamond"></i>تخصص های من</div>
+							<h2 class="alx-heading__title">بهترین خدمات من</h2>
+							<div class="alx-heading__zigzag">
+								<svg x="0px" y="0px" viewBox="0 0 100 19.5">
+									<g>
+										<polygon points="79.3,18 69.6,8.3 60,18 50.3,8.3 40.6,18 31,8.3 21.3,18 11.7,8.3 3.4,16.5 0.6,13.7 11.7,2.7 21.3,12.3 31,2.7 								40.6,12.3 50.3,2.7 60,12.3 69.6,2.7 79.3,12.3 88.9,2.7 100,13.6 97.2,16.4 89,8.3 "></polygon>
+									</g>
+								</svg>
+							</div>
+							<div class="alx-heading__description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد</div>
+						</div><a class="alx-btn" href="#page9">شروع یک پروژه</a>
+					</div>
+					<div class="col-lg-6 offset-lg-1">
+						<div class="alx-services alx-dots-style" data-interval="7000">
+							<div class="alx-services__container">
+								<div class="alx-services__item">
+									<div class="alx-services__item__wrap">
+										<div class="alx-services__item__main">
+											<i class="fa fa-film"></i>
+											<h4 class="alx-services__item__title">ویرایش ویدیو</h4>
+										</div>
+										<div class="alx-services__item__description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </div>
+										<div class="alx-services__item__opacityicon"><i class="fa fa-film"></i></div>
+									</div>
+								</div>
+								<div class="alx-services__item">
+									<div class="alx-services__item__wrap">
+										<div class="alx-services__item__main">
+											<i class="fa fa-camera-retro"></i>
+											<h4 class="alx-services__item__title">عکاس</h4>
+										</div>
+										<div class="alx-services__item__description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </div>
+										<div class="alx-services__item__opacityicon"><i class="fa fa-camera-retro"></i></div>
+									</div>
+								</div>
+								<div class="alx-services__item">
+									<div class="alx-services__item__wrap">
+										<div class="alx-services__item__main">
+											<i class="fa fa-diamond"></i>
+											<h4 class="alx-services__item__title">طراح</h4>
+										</div>
+										<div class="alx-services__item__description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </div>
+										<div class="alx-services__item__opacityicon"><i class="fa fa-diamond"></i></div>
+									</div>
+								</div>
+								<div class="alx-services__item">
+									<div class="alx-services__item__wrap">
+										<div class="alx-services__item__main">
+											<i class="fa fa-feed"></i>
+											<h4 class="alx-services__item__title">مدیریت</h4>
+										</div>
+										<div class="alx-services__item__description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </div>
+										<div class="alx-services__item__opacityicon"><i class="fa fa-feed"></i></div>
+									</div>
+								</div>
+							</div>
+							<div class="alx-services__container">
+								<div class="alx-services__item">
+									<div class="alx-services__item__wrap">
+										<div class="alx-services__item__main">
+											<i class="fa fa-wordpress"></i>
+											<h4 class="alx-services__item__title">وردپرس</h4>
+										</div>
+										<div class="alx-services__item__description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </div>
+										<div class="alx-services__item__opacityicon"><i class="fa fa-wordpress"></i></div>
+									</div>
+								</div>
+								<div class="alx-services__item">
+									<div class="alx-services__item__wrap">
+										<div class="alx-services__item__main">
+											<i class="fa fa-css3"></i>
+											<h4 class="alx-services__item__title">CSS&HTML</h4>
+										</div>
+										<div class="alx-services__item__description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </div>
+										<div class="alx-services__item__opacityicon"><i class="fa fa-css3"></i></div>
+									</div>
+								</div>
+								<div class="alx-services__item">
+									<div class="alx-services__item__wrap">
+										<div class="alx-services__item__main">
+											<i class="fa fa-opencart"></i>
+											<h4 class="alx-services__item__title">اپن کارت</h4>
+										</div>
+										<div class="alx-services__item__description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </div>
+										<div class="alx-services__item__opacityicon"><i class="fa fa-opencart"></i></div>
+									</div>
+								</div>
+								<div class="alx-services__item">
+									<div class="alx-services__item__wrap">
+										<div class="alx-services__item__main">
+											<i class="fa fa-connectdevelop"></i>
+											<h4 class="alx-services__item__title">پشتیبانی</h4>
+										</div>
+										<div class="alx-services__item__description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </div>
+										<div class="alx-services__item__opacityicon"><i class="fa fa-connectdevelop"></i></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="alx-vertical-middle pp-scrollable alx-dark-section alx-bg-img" data-image="images/bgd3.jpg">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-5 alx-style" data-style="margin: 50px 0">
+						<div class="alx-heading">
+							<h2 class="alx-heading__title">مهارت های من</h2>
+							<div class="alx-heading__zigzag">
+								<svg x="0px" y="0px" viewBox="0 0 100 19.5">
+									<g>
+										<polygon points="79.3,18 69.6,8.3 60,18 50.3,8.3 40.6,18 31,8.3 21.3,18 11.7,8.3 3.4,16.5 0.6,13.7 11.7,2.7 21.3,12.3 31,2.7 								40.6,12.3 50.3,2.7 60,12.3 69.6,2.7 79.3,12.3 88.9,2.7 100,13.6 97.2,16.4 89,8.3 "></polygon>
+									</g>
+								</svg>
+							</div>
+
+							@* <div class="alx-heading__description">
+								من کارم را خوب و به موقع انجام می دهم - این اصل غیرقابل انکار، مهمتر از آن است که حتی نمی تواند پول باشد.<br>
+								<strong>فقط نمونه کارها من را بررسی کنید و بیایید با هم کار کنیم!</strong>
+							</div> *@
+						</div>
+						<div class="alx-skills-list">
+							@if (skills.Count() > 0)
+							{
+
+								@foreach (var item in skills.Take(4))
+								{
+									<div class="alx-skills">
+										<div class="alx-skills__header">
+											<div class="alx-skills__title">@item.Title</div>
+											<div class="alx-skills__count">@item.Percent%</div>
+										</div>
+										<div class="alx-skills__body">
+											<div class="alx-skills__bar" data-skills="@item.Percent%"></div>
+										</div>
+									</div>
+								}
+
+							}
+						</div>
+					</div>
+					<div class="col-lg-5 offset-lg-2 align-self-center">
+
+						@if (skills.Count() > 0)
+						{
+
+							@foreach (var item in skills.Skip(5).Take(5))
+							{
+								<div class="alx-skills">
+									<div class="alx-skills__header">
+										<div class="alx-skills__title">@item.Title</div>
+										<div class="alx-skills__count">@item.Percent%</div>
+									</div>
+									<div class="alx-skills__body">
+										<div class="alx-skills__bar" data-skills="@item.Percent%"></div>
+									</div>
+								</div>
+							}
+
+						}
+
+
+					
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="alx-vertical-middle pp-scrollable alx-bg-img" data-image="images/bgl3.jpg">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-5">
+						<div class="alx-heading">
+							<div class="alx-heading__pretitle"><i class="fa fa-money"></i>نرخ بازای ه3 ساعت فقط 25 هزار تومان</div>
+							<h2 class="alx-heading__title">قیمت</h2>
+							<div class="alx-heading__zigzag">
+								<svg x="0px" y="0px" viewBox="0 0 100 19.5">
+									<g>
+										<polygon points="79.3,18 69.6,8.3 60,18 50.3,8.3 40.6,18 31,8.3 21.3,18 11.7,8.3 3.4,16.5 0.6,13.7 11.7,2.7 21.3,12.3 31,2.7 								40.6,12.3 50.3,2.7 60,12.3 69.6,2.7 79.3,12.3 88.9,2.7 100,13.6 97.2,16.4 89,8.3 "></polygon>
+									</g>
+								</svg>
+							</div>
+						</div>
+						<div class="alx-price">
+							<div class="alx-price__title">طراحی وب سایت</div>
+							<div class="alx-price__price">
+								<span>از</span>
+								<p>900/000 ت</p>
+							</div>
+						</div>
+						<div class="alx-price">
+							<div class="alx-price__title">طراحی وب سایت شرکتی</div>
+							<div class="alx-price__price">
+								<span>از</span>
+								<p>900/000 ت</p>
+							</div>
+						</div>
+						<div class="alx-price">
+							<div class="alx-price__title">طراحی وب سایت خدماتی</div>
+							<div class="alx-price__price">
+								<span>از</span>
+								<p>900/000 ت</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-5 offset-lg-2 align-self-end">
+						<div class="alx-price">
+							<div class="alx-price__title">طراحی وب سایت فروشگاهی</div>
+							<div class="alx-price__price">
+								<span>از</span>
+								<p>900/000 ت</p>
+							</div>
+						</div>
+						<div class="alx-price">
+							<div class="alx-price__title">طراحی وب سایت های شخصی</div>
+							<div class="alx-price__price">
+								<span>از</span>
+								<p>900/000 ت</p>
+							</div>
+						</div>
+						<div class="alx-price">
+							<div class="alx-price__title">طراحی صفحه اصلی</div>
+							<div class="alx-price__price">
+								<span>از</span>
+								<p>900/000 ت</p>
+							</div>
+						</div>
+						<div class="alx-price">
+							<div class="alx-price__title">طراحی صفحات داخلی</div>
+							<div class="alx-price__price">
+								<span>از</span>
+								<p>900/000 ت</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="alx-vertical-middle pp-scrollable alx-dark-section alx-bg-img" data-image="images/bgd3.jpg">
+			<div class="container">
+				<div class="col-lg-12">
+					<ul class="alx-portfolio-control alx-portfolio__nav alx-text-left">
+						<li class="alx-active" data-filter="*">همه</li>
+						<li data-filter=".alx-f-branding">برندسازی</li>
+						<li data-filter=".alx-f-web">وب</li>
+						<li data-filter=".alx-f-graphic">گرافیک</li>
+						<li data-filter=".alx-f-logo">لوگو</li>
+						<li data-filter=".alx-f-photography"> عکاسی</li>
+					</ul>
+				</div>
+				<div class="alx-portfolio-items alx-layout-isotope alx-isotope-gap" data-grid="4">
+					<div class="alx-isotope-item alx-f-branding alx-f-photography">
+						<div class="alx-portfolio-item alx-portfolio-item__style1">
+							<a class="alx-img-gallery" href="~/templatefile/images/portfolio/1.jpg"></a>
+							<div class="alx-portfolio-item-image">
+								<div class="alx-bg-img" data-image="images/portfolio/1.jpg"></div>
+							</div>
+							<div class="alx-portfolio-item-details">
+								<h4>طراحی وبسایت خلاقانه</h4>
+								<p>خلاقانه</p>
+							</div>
+						</div>
+					</div>
+					<div class="alx-isotope-item alx-f-graphic">
+						<div class="alx-portfolio-item alx-portfolio-item__style1">
+							<a class="alx-img-gallery" href="~/templatefile/images/portfolio/2.jpg"></a>
+							<div class="alx-portfolio-item-image">
+								<div class="alx-bg-img" data-image="images/portfolio/2.jpg"></div>
+							</div>
+							<div class="alx-portfolio-item-details">
+								<h4>طراحی سایت جدید</h4>
+								<p>خلاقانه</p>
+							</div>
+						</div>
+					</div>
+					<div class="alx-isotope-item alx-f-web">
+						<div class="alx-portfolio-item alx-portfolio-item__style1">
+							<a class="alx-img-gallery" href="~/templatefile/images/portfolio/3.jpg"></a>
+							<div class="alx-portfolio-item-image">
+								<div class="alx-bg-img" data-image="images/portfolio/3.jpg"></div>
+							</div>
+							<div class="alx-portfolio-item-details">
+								<h4>لوگو آرایشگاه</h4>
+								<p>خلاقانه</p>
+							</div>
+						</div>
+					</div>
+					<div class="alx-isotope-item alx-f-logo alx-f-photography">
+						<div class="alx-portfolio-item alx-portfolio-item__style1">
+							<a class="alx-img-gallery" href="~/templatefile/images/portfolio/4.jpg"></a>
+							<div class="alx-portfolio-item-image">
+								<div class="alx-bg-img" data-image="images/portfolio/3.jpg"></div>
+							</div>
+							<div class="alx-portfolio-item-details">
+								<h4>طراحی سایت جدید</h4>
+								<p>خلاقانه</p>
+							</div>
+						</div>
+					</div>
+					<div class="alx-isotope-item alx-f-branding">
+						<div class="alx-portfolio-item alx-portfolio-item__style1">
+							<a class="alx-img-gallery" href="~/templatefile/images/portfolio/5.jpg"></a>
+							<div class="alx-portfolio-item-image">
+								<div class="alx-bg-img" data-image="images/portfolio/5.jpg"></div>
+							</div>
+							<div class="alx-portfolio-item-details">
+								<h4>منحنی ساده</h4>
+								<p>خلاقانه</p>
+							</div>
+						</div>
+					</div>
+					<div class="alx-isotope-item alx-f-web">
+						<div class="alx-portfolio-item alx-portfolio-item__style1">
+							<a class="alx-img-gallery" href="~/templatefile/images/portfolio/6.jpg"></a>
+							<div class="alx-portfolio-item-image">
+								<div class="alx-bg-img" data-image="images/portfolio/6.jpg"></div>
+							</div>
+							<div class="alx-portfolio-item-details">
+								<h4>رویکرد مدرن</h4>
+								<p>خلاقانه</p>
+							</div>
+						</div>
+					</div>
+					<div class="alx-isotope-item alx-f-branding">
+						<div class="alx-portfolio-item alx-portfolio-item__style1">
+							<a class="alx-img-gallery" href="~/templatefile/images/portfolio/7.jpg"></a>
+							<div class="alx-portfolio-item-image">
+								<div class="alx-bg-img" data-image="images/portfolio/7.jpg"></div>
+							</div>
+							<div class="alx-portfolio-item-details">
+								<h4>برش جدید</h4>
+								<p>خلاقانه</p>
+							</div>
+						</div>
+					</div>
+					<div class="alx-isotope-item alx-f-graphic alx-f-web alx-f-photography">
+						<div class="alx-portfolio-item alx-portfolio-item__style1">
+							<a class="alx-img-gallery" href="~/templatefile/images/portfolio/8.jpg"></a>
+							<div class="alx-portfolio-item-image">
+								<div class="alx-bg-img" data-image="images/portfolio/8.jpg"></div>
+							</div>
+							<div class="alx-portfolio-item-details">
+								<h4>وب سایت جذاب</h4>
+								<p>خلاقانه</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="alx-vertical-middle pp-scrollable alx-bg-img" data-image="images/bg2.jpg">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="alx-heading">
+							<h2 class="alx-heading__title">نظرات مشتریان</h2>
+							<div class="alx-heading__zigzag">
+								<svg x="0px" y="0px" viewBox="0 0 100 19.5">
+									<g>
+										<polygon points="79.3,18 69.6,8.3 60,18 50.3,8.3 40.6,18 31,8.3 21.3,18 11.7,8.3 3.4,16.5 0.6,13.7 11.7,2.7 21.3,12.3 31,2.7 								40.6,12.3 50.3,2.7 60,12.3 69.6,2.7 79.3,12.3 88.9,2.7 100,13.6 97.2,16.4 89,8.3 "></polygon>
+									</g>
+								</svg>
+							</div>
+						</div>
+					</div>
+					<div class="alx-testimonials">
+						<div class="alx-testimonials__slides">
+							<div class="alx-testimonials__item">
+								<img src="~/templatefile/images/review1.jpg" alt="">
+								<div class="alx-testimonials__content">
+									<div class="alx-testimonials__item__review"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></div>
+									<div class="alx-testimonials__item__name">نازنین رافعی</div>
+									<div class="alx-testimonials__item__text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</div>
+								</div>
+							</div>
+							<div class="alx-testimonials__item">
+								<img src="~/templatefile/images/review2.jpg" alt="">
+								<div class="alx-testimonials__content">
+									<div class="alx-testimonials__item__review"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+									<div class="alx-testimonials__item__name">معین زارع</div>
+									<div class="alx-testimonials__item__text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</div>
+								</div>
+							</div>
+							<div class="alx-testimonials__item">
+								<img src="~/templatefile/images/review3.jpg" alt="">
+								<div class="alx-testimonials__content">
+									<div class="alx-testimonials__item__review"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></div>
+									<div class="alx-testimonials__item__name">آرش خادم</div>
+									<div class="alx-testimonials__item__text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</div>
+								</div>
+							</div>
+						</div>
+						<div class="alx-slider__nav">
+							<div class="alx-slider__nav__prev">
+								<div class="alx-slider__nav__next__icon"><i class="fa fa-angle-double-left"></i></div>
+							</div>
+							<div class="alx-slider__nav__dots"></div>
+							<div class="alx-slider__nav__next">
+								<div class="alx-slider__nav__next__icon"><i class="fa fa-angle-double-right"></i></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="alx-vertical-middle alx-dark-section pp-scrollable alx-bg-img" data-image="images/bgd5.jpg">
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-lg-5 alx-style" data-style="margin: 50px 0">
+						<div class="alx-heading">
+							<h2 class="alx-heading__title">مشتریان من</h2>
+							<div class="alx-heading__zigzag">
+								<svg x="0px" y="0px" viewBox="0 0 100 19.5">
+									<g>
+										<polygon points="79.3,18 69.6,8.3 60,18 50.3,8.3 40.6,18 31,8.3 21.3,18 11.7,8.3 3.4,16.5 0.6,13.7 11.7,2.7 21.3,12.3 31,2.7 								40.6,12.3 50.3,2.7 60,12.3 69.6,2.7 79.3,12.3 88.9,2.7 100,13.6 97.2,16.4 89,8.3 "></polygon>
+									</g>
+								</svg>
+							</div>
+							<div class="alx-heading__description">من از هر فرصتی برای ایجاد مشارکت تجاری بلند مدت با شرکت هایی که در بخش خود رهبر هستند استفاده می کنم. من به منظور ارائه بهترین راه حل های موجود به مشتریان ، من با شرکای شبکه خود از نزدیک همکاری می کنم.</div>
+						</div><a class="alx-btn alx-btn-primary" href="#">مشتری من شو</a>
+					</div>
+					<div class="col-lg-6 offset-lg-1">
+						<div class="alx-services alx-services__partners alx-dots-style" data-interval="7000">
+							<div class="alx-services__container">
+								<div class="alx-services__item">
+									<div class="alx-services__item__wrap"><img src="~/templatefile/images/partner.png" alt=""></div>
+								</div>
+								<div class="alx-services__item">
+									<div class="alx-services__item__wrap"><img src="~/templatefile/images/partner2.png" alt=""></div>
+								</div>
+								<div class="alx-services__item">
+									<div class="alx-services__item__wrap"><img src="~/templatefile/images/partner3.png" alt=""></div>
+								</div>
+								<div class="alx-services__item">
+									<div class="alx-services__item__wrap"><img src="~/templatefile/images/partner4.png" alt=""></div>
+								</div>
+								<div class="alx-services__item">
+									<div class="alx-services__item__wrap"><img src="~/templatefile/images/partner5.png" alt=""></div>
+								</div>
+								<div class="alx-services__item">
+									<div class="alx-services__item__wrap"><img src="~/templatefile/images/partner6.png" alt=""></div>
+								</div>
+							</div>
+							<div class="alx-services__container">
+								<div class="alx-services__item">
+									<div class="alx-services__item__wrap"><img src="~/templatefile/images/partner6.png" alt=""></div>
+								</div>
+								<div class="alx-services__item">
+									<div class="alx-services__item__wrap"><img src="~/templatefile/images/partner.png" alt=""></div>
+								</div>
+								<div class="alx-services__item">
+									<div class="alx-services__item__wrap"><img src="~/templatefile/images/partner2.png" alt=""></div>
+								</div>
+								<div class="alx-services__item">
+									<div class="alx-services__item__wrap"><img src="~/templatefile/images/partner4.png" alt=""></div>
+								</div>
+								<div class="alx-services__item">
+									<div class="alx-services__item__wrap"><img src="~/templatefile/images/partner5.png" alt=""></div>
+								</div>
+								<div class="alx-services__item">
+									<div class="alx-services__item__wrap"><img src="~/templatefile/images/partner3.png" alt=""></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="alx-vertical-middle pp-scrollable alx-bg-img" data-image="images/bgl5.jpg">
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-lg-5">
+						<div class="alx-heading">
+							<h2 class="alx-heading__title">سلام برسان</h2>
+							<div class="alx-heading__zigzag">
+								<svg x="0px" y="0px" viewBox="0 0 100 19.5">
+									<g>
+										<polygon points="79.3,18 69.6,8.3 60,18 50.3,8.3 40.6,18 31,8.3 21.3,18 11.7,8.3 3.4,16.5 0.6,13.7 11.7,2.7 21.3,12.3 31,2.7 								40.6,12.3 50.3,2.7 60,12.3 69.6,2.7 79.3,12.3 88.9,2.7 100,13.6 97.2,16.4 89,8.3 "></polygon>
+									</g>
+								</svg>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-4">
+						<div class="alx-icon">
+							<div class="alx-icon__icon"><span><i class="fa fa-phone"></i></span></div>
+							<div class="alx-icon__text">
+								<h5>تماس با من در هر زمان</h5>
+								<p>+754-554-54-34</p>
+							</div>
+						</div>
+						<div class="alx-icon">
+							<div class="alx-icon__icon"><span><i class="fa fa-envelope"></i></span></div>
+							<div class="alx-icon__text">
+								<h5>ایمیل من</h5><a href="mailto:brainiaktheme@gmail.com">Office@domian.com</a>
+							</div>
+						</div>
+						<div class="alx-icon">
+							<div class="alx-icon__icon"><span><i class="fa fa-home"></i></span></div>
+							<div class="alx-icon__text">
+								<h5>آدرس</h5>
+								<p>ایران، استان خراسان رضوی</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-8">
+						<form class="alx-contact-form" action="#">
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="alx-input-group">
+										<input name="name" type="text" required placeholder="نام شما *"><i class="fa fa-user-o"></i>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="alx-input-group">
+										<input name="email" type="email" required placeholder="ایمیل شما *"><i class="fa fa-at"></i>
+									</div>
+								</div>
+								<div class="col-lg-12">
+									<div class="alx-input-group">
+										<textarea name="message" rows="6" required placeholder="پیغام *"></textarea><i class="fa fa-commenting-o"></i>
+									</div>
+									<div class="alx-success-msg hide">
+										<p>پیغام با موفقیت ارسال شد</p>
+									</div>
+									<input class="alx-btn" type="submit" value="ارسال پیغام">
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<div class="alx-lang-change">
+		<ul>
+			<li class="current-lang"><a href="#">فارسی</a></li>
+			<li><a href="#">EN</a></li>
+			<li><a href="#">Rus</a></li>
+		</ul>
+	</div>
+	<div class="alx-copyright">
+		<p><span>©</span>Gnusmas 2019</p>
+	</div>
 </div>
