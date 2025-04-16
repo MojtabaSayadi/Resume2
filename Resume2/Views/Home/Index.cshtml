@@ -4,6 +4,13 @@
 	MyInfoOnWebViewModel myinfo = new MyInfoOnWebViewModel();
 	List<WebSocial> socials = new List<WebSocial>();
 	List<WebSkills> skills = new List<WebSkills>();
+	List<WebDocViewModel> docTypes = new List<WebDocViewModel>();
+
+	if (ViewBag.WebDoc != null)
+	{
+		docTypes = ViewBag.WebDoc as List<WebDocViewModel>;
+	}
+
 
 	if (ViewBag.WebInfo != null)
 	{
@@ -268,7 +275,7 @@
 						}
 
 
-					
+
 					</div>
 				</div>
 			</div>
@@ -346,14 +353,18 @@
 		<section class="alx-vertical-middle pp-scrollable alx-dark-section alx-bg-img" data-image="images/bgd3.jpg">
 			<div class="container">
 				<div class="col-lg-12">
-					<ul class="alx-portfolio-control alx-portfolio__nav alx-text-left">
-						<li class="alx-active" data-filter="*">همه</li>
-						<li data-filter=".alx-f-branding">برندسازی</li>
-						<li data-filter=".alx-f-web">وب</li>
-						<li data-filter=".alx-f-graphic">گرافیک</li>
-						<li data-filter=".alx-f-logo">لوگو</li>
-						<li data-filter=".alx-f-photography"> عکاسی</li>
-					</ul>
+					@if (docTypes.Count() > 0)
+					{
+						<ul class="alx-portfolio-control alx-portfolio__nav alx-text-left">
+							@foreach (var item in docTypes)
+							{
+								<li class="alx-active" data-filter="@item.Title_En">@item.Title</li>
+							}
+						</ul>
+					}
+
+				
+
 				</div>
 				<div class="alx-portfolio-items alx-layout-isotope alx-isotope-gap" data-grid="4">
 					<div class="alx-isotope-item alx-f-branding alx-f-photography">
@@ -595,20 +606,20 @@
 							<div class="alx-icon__icon"><span><i class="fa fa-phone"></i></span></div>
 							<div class="alx-icon__text">
 								<h5>تماس با من در هر زمان</h5>
-								<p>+754-554-54-34</p>
+								<p>09123076670</p>
 							</div>
 						</div>
 						<div class="alx-icon">
 							<div class="alx-icon__icon"><span><i class="fa fa-envelope"></i></span></div>
 							<div class="alx-icon__text">
-								<h5>ایمیل من</h5><a href="mailto:brainiaktheme@gmail.com">Office@domian.com</a>
+								<h5>ایمیل من</h5><a href="mojtabasayadi1349@gmail.com">mojtabasayadi1349@gmail.com</a>
 							</div>
 						</div>
 						<div class="alx-icon">
 							<div class="alx-icon__icon"><span><i class="fa fa-home"></i></span></div>
 							<div class="alx-icon__text">
 								<h5>آدرس</h5>
-								<p>ایران، استان خراسان رضوی</p>
+								<p>ایران، تهران ، تهرانسر</p>
 							</div>
 						</div>
 					</div>
