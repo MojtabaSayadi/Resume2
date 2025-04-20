@@ -12,7 +12,7 @@ namespace Resume2.Core.Services.Interfaces
     {
         WebDocDetails GetWebDocDetailsById(int id);
         List<WebDocDetails> GetWebDocDetails();
-        //List<WebDocViewModel> GetAllWebDocDetailsViewModel();
+        List<WebDocDetailsViewModel> GetAllWebDocDetailsViewModel(); /// WebDocDetailsViewModel
         bool IsExist(int Id);
         void AddWebDocDetails(WebDocDetails webDocDetails);
         void UpdateWebDocDetails(WebDocDetails webDocDetails);

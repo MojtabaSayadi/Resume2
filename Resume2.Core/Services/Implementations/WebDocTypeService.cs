@@ -41,7 +41,7 @@ namespace Resume2.Core.Services.Implementations
             WebDocViewModel tmp=new WebDocViewModel()
             {
                 Title="همه",
-                Title_En="*"
+                Title_En="All"
             };
 
             result.Add(tmp);

@@ -17,4 +17,8 @@
     <ProjectReference Include="..\Resume2.Ioc\Resume2.Ioc.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\image\DocumentImage\Thumb\" />
+  </ItemGroup>
+
 </Project>

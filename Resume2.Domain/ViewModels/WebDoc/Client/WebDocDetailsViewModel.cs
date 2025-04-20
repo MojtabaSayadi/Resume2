@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace Resume2.Domain.ViewModels.WebDoc.Client
 {
-    public class WebDocViewModel
+    public class WebDocDetailsViewModel
     {
-        public string Title { get; set; }
         public string Title_En { get; set; }
-
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string ImageName { get; set; }
     }
-    
-
 }
