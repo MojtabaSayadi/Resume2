@@ -25,7 +25,7 @@ namespace Resume2.Core.Services.Implementations
 
         public void DeleteWebSocial(int id)
         {
-            webSocialRepository.Delete(id);
+            webSocialRepository.Delete(GetWebSocialById(id));
             SaveWebSocial();
         }
 

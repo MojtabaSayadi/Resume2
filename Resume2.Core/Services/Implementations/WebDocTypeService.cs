@@ -21,16 +21,19 @@ namespace Resume2.Core.Services.Implementations
         public void AddWebDocType(WebDocType webDocType)
         {
             webDocTypeRepository.Add(webDocType);
+            SaveWebDocType();
         }
 
         public void DeleteWebDocType(int id)
         {
-            webDocTypeRepository.Delete(id);
+            webDocTypeRepository.Delete(GetWebDocTypeById(id));
+            SaveWebDocType();
         }
 
         public void DeleteWebDocType(WebDocType webDocType)
         {
             webDocTypeRepository.Delete(webDocType);
+            SaveWebDocType();
         }
 
         public List<WebDocViewModel> GetAllWebDocTypeViewModel()
@@ -73,7 +76,7 @@ namespace Resume2.Core.Services.Implementations
 
         public bool IsExist(int Id)
         {
-            throw new NotImplementedException();
+            return webDocTypeRepository.IsExist(Id);
         }
 
         public void SaveWebDocType()
@@ -84,6 +87,7 @@ namespace Resume2.Core.Services.Implementations
         public void UpdateWebDocType(WebDocType webDocType)
         {
             webDocTypeRepository.Update(webDocType);
+            SaveWebDocType();
         }
     }
 }

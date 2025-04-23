@@ -25,16 +25,19 @@ namespace Resume2.Core.Services.Implementations
         public void AddWebDocDetails(WebDocDetails webDocDetails)
         {
             webDocDetailsRepository.Add(webDocDetails);
+            SaveWebDocDetails();
         }
 
         public void DeleteWebDocDetails(int id)
         {
-            throw new NotImplementedException();
+            webDocDetailsRepository.Delete(GetWebDocDetailsById(id));
+            SaveWebDocDetails();
         }
 
         public void DeleteWebDocDetails(WebDocDetails webDocDetails)
         {
             webDocDetailsRepository.Delete(webDocDetails);
+            SaveWebDocDetails();
         }
 
         public List<WebDocDetailsViewModel> GetAllWebDocDetailsViewModel()
@@ -84,6 +87,7 @@ namespace Resume2.Core.Services.Implementations
         public void UpdateWebDocDetails(WebDocDetails webDocDetails)
         {
             webDocDetailsRepository.Update(webDocDetails);
+            SaveWebDocDetails();
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Resume2.Data.Context;
 using Resume2.Domain.Interfaces;
 using Resume2.Domain.Models.Web;
 
@@ -10,44 +11,50 @@ namespace Resume2.Data.Repositories
 {
     public class WebServicesRepository : IWebServicesRepository
     {
+        private readonly Resume2Context context;
+
+        public WebServicesRepository(Resume2Context _context)
+        {
+            context = _context;
+        }
         public void Add(WebServices webServices)
         {
-            throw new NotImplementedException();
+            context.webServices.Add(webServices);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            context.webServices.Remove(GetById(id));
         }
 
         public void Delete(WebServices webServices)
         {
-            throw new NotImplementedException();
+            context?.webServices.Remove(webServices);
         }
 
         public List<WebServices> GetAll()
         {
-            throw new NotImplementedException();
+            return context.webServices.ToList();
         }
 
         public WebServices GetById(int id)
         {
-            throw new NotImplementedException();
+            return context.webServices.Find(id);
         }
 
         public bool IsExist(int Id)
         {
-            throw new NotImplementedException();
+            return context.webServices.Any(x => x.Id == Id);
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+            context.SaveChanges();
         }
 
         public void Update(WebServices webServices)
         {
-            throw new NotImplementedException();
+            context.webServices.UpdateRange(webServices);
         }
     }
 }

@@ -16,8 +16,11 @@ namespace Resume2.Controllers
         private IWebSocialService webSocialService;
         private IWebDocTypeService webDocTypeService;
         private IWebDocDetailsService webDocDetailsService;
+        private IWebServicesService webServicesService;
 
-        public HomeController(IWebDocDetailsService _webDocDetailsService,IWebDocTypeService _webDocTypeService,IWebSkillsService _webSkillsService, IWebSocialService  _webSocialService, IWebMainInfoService _webMainInfoService,ILogger<HomeController> logger)
+        public HomeController(IWebDocDetailsService _webDocDetailsService,IWebDocTypeService _webDocTypeService, IWebServicesService _webServicesService,
+            IWebSkillsService _webSkillsService, IWebSocialService  _webSocialService,
+            IWebMainInfoService _webMainInfoService,ILogger<HomeController> logger)
         {
             _logger = logger;
             webMainInfoService = _webMainInfoService;
@@ -25,6 +28,7 @@ namespace Resume2.Controllers
             webSkillsService = _webSkillsService;
             webDocTypeService = _webDocTypeService;
             webDocDetailsService = _webDocDetailsService;
+            webServicesService = _webServicesService;
         }
 
         public IActionResult Index()
@@ -37,6 +41,10 @@ namespace Resume2.Controllers
 
             List<WebSocial> MySocial = webSocialService.GetWebSocials();
             ViewBag.Social = MySocial;
+
+            List<WebServices> MyServices = webServicesService.GetWebServices();
+            ViewBag.Services = MyServices;
+
             List<WebSkills> MySkills = webSkillsService.GetWebSkills();
             ViewBag.Skills = MySkills;
 

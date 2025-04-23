@@ -4,6 +4,7 @@
 	MyInfoOnWebViewModel myinfo = new MyInfoOnWebViewModel();
 	List<WebSocial> socials = new List<WebSocial>();
 	List<WebSkills> skills = new List<WebSkills>();
+	List<WebServices> services = new List<WebServices>();
 	List<WebDocViewModel> docTypes = new List<WebDocViewModel>();
 	List<WebDocDetailsViewModel> docD = new List<WebDocDetailsViewModel>();
 
@@ -29,6 +30,11 @@
 	if (ViewBag.Skills != null)
 	{
 		skills = ViewBag.Skills as List<WebSkills>;
+	}
+	if (ViewBag.Services != null)
+	{
+
+		services = ViewBag.Services as List<WebServices>;
 	}
 
 }
@@ -77,7 +83,7 @@
 									</g>
 								</svg>
 							</div>
-							<div class="alx-heading__description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</div>
+							<div class="alx-heading__description">با تجربه گسترده در مدیریت بانک‌های اطلاعاتی  اوراکل، توانایی در نصب، پیکربندی، و نگهداری پایگاه‌های داده اوراکل را دارم. </div>
 						</div>
 						<div class="alx-btns-section alx-text-center"><a class="alx-btn" href="#page6">نمونه کارهای من</a></div>
 					</div>
@@ -126,23 +132,35 @@
 									</g>
 								</svg>
 							</div>
-							<div class="alx-heading__description">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد</div>
+							<div class="alx-heading__description">آشنایی کامل با ابزارها و فرآیندهای مرتبط با ادمین دیتابیس به من این امکان را می‌دهد که پایگاه‌های داده را به‌صورت کارآمد و ایمن مدیریت کنم و مشکلات عملکردی را شناسایی و حل کنم</div>
 						</div><a class="alx-btn" href="#page9">شروع یک پروژه</a>
 					</div>
 					<div class="col-lg-6 offset-lg-1">
 						<div class="alx-services alx-dots-style" data-interval="7000">
+
 							<div class="alx-services__container">
+
+
 								<div class="alx-services__item">
 									<div class="alx-services__item__wrap">
-										<div class="alx-services__item__main">
-											<i class="fa fa-film"></i>
-											<h4 class="alx-services__item__title">سامانه های لجستیکی</h4>
-										</div>
-										<div class="alx-services__item__description">لجستیکی توضیحات . </div>
-										<div class="alx-services__item__opacityicon"><i class="fa fa-film"></i></div>
+										@if (services.Count() > 0)
+										{
+											@foreach (var item in services)
+											{
+												<div class="alx-services__item__main">
+													<i class="@item.ClassName"></i>
+													<h4 class="alx-services__item__title">@item.Title</h4>
+												</div>
+												<div class="alx-services__item__description">@item.Description</div>
+												<div class="alx-services__item__opacityicon"><i class="@item.ClassName"></i></div>
+											}
+										}
+
 									</div>
 								</div>
-								<div class="alx-services__item">
+
+
+								@* 							<div class="alx-services__item">
 									<div class="alx-services__item__wrap">
 										<div class="alx-services__item__main">
 											<i class="fa fa-camera-retro"></i>
@@ -171,7 +189,7 @@
 										<div class="alx-services__item__description">مدیریت توضیحات . </div>
 										<div class="alx-services__item__opacityicon"><i class="fa fa-feed"></i></div>
 									</div>
-								</div>
+								</div> *@
 							</div>
 							<div class="alx-services__container">
 								<div class="alx-services__item">
@@ -363,11 +381,13 @@
 						<ul class="alx-portfolio-control alx-portfolio__nav alx-text-left">
 							@foreach (var item in docTypes)
 							{
-								if(item.Title_En.Equals("All")){
+								if (item.Title_En.Equals("All"))
+								{
 									<li class="alx-active" data-filter="*">@item.Title</li>
 
 								}
-								else{
+								else
+								{
 									<li data-filter=".@item.Title_En">@item.Title</li>
 
 								}

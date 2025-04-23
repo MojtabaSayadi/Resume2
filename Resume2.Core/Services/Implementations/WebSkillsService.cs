@@ -20,16 +20,19 @@ namespace Resume2.Core.Services.Implementations
         public void AddWebSkills(WebSkills webSkills)
         {
             webSkillsRepository.Add(webSkills);
+            SaveWebSkills();
         }
 
         public void DeleteWebSkills(int id)
         {
             webSkillsRepository.Delete(GetWebSkillsById(id));
+            SaveWebSkills();
         }
 
         public void DeleteWebSkills(WebSkills webSkills)
         {
             webSkillsRepository.Delete(webSkills);
+            SaveWebSkills();
         }
 
         public List<WebSkills> GetWebSkills()
@@ -55,6 +58,7 @@ namespace Resume2.Core.Services.Implementations
         public void UpdateWebSkills(WebSkills webSkills)
         {
              webSkillsRepository.Update(webSkills);
+            SaveWebSkills();
         }
     }
 }
