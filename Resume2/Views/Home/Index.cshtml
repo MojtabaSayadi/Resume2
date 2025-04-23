@@ -137,102 +137,34 @@
 					</div>
 					<div class="col-lg-6 offset-lg-1">
 						<div class="alx-services alx-dots-style" data-interval="7000">
+							@if (services.Count() > 0)
+							{
 
-							<div class="alx-services__container">
+								<div class="alx-services__container">
+									@foreach (var item in services)
+									{
+
+										<div class="alx-services__item">
+											<div class="alx-services__item__wrap">
 
 
-								<div class="alx-services__item">
-									<div class="alx-services__item__wrap">
-										@if (services.Count() > 0)
-										{
-											@foreach (var item in services)
-											{
 												<div class="alx-services__item__main">
 													<i class="@item.ClassName"></i>
 													<h4 class="alx-services__item__title">@item.Title</h4>
 												</div>
 												<div class="alx-services__item__description">@item.Description</div>
 												<div class="alx-services__item__opacityicon"><i class="@item.ClassName"></i></div>
-											}
-										}
-
-									</div>
-								</div>
 
 
-								@* 							<div class="alx-services__item">
-									<div class="alx-services__item__wrap">
-										<div class="alx-services__item__main">
-											<i class="fa fa-camera-retro"></i>
-											<h4 class="alx-services__item__title">تولید نرم افزارهای تحت وب</h4>
+
+											</div>
 										</div>
-										<div class="alx-services__item__description">با استفاده از فناوری‌های جاوا و Spring Framework، تجربه طراحی و توسعه نرم‌افزارهای تحت وب پایدار، مقیاس‌پذیر و امن را دارم. </div>
-										<div class="alx-services__item__opacityicon"><i class="fa fa-camera-retro"></i></div>
-									</div>
+									}
+
+									
 								</div>
-								<div class="alx-services__item">
-									<div class="alx-services__item__wrap">
-										<div class="alx-services__item__main">
-											<i class="fa fa-diamond"></i>
-											<h4 class="alx-services__item__title">بانک اطلاعاتی اوراکل</h4>
-										</div>
-										<div class="alx-services__item__description">با تجربه گسترده در مدیریت بانک‌های اطلاعاتی  اوراکل، توانایی در نصب، پیکربندی، و نگهداری پایگاه‌های داده اوراکل را دارم. آشنایی کامل با ابزارها و فرآیندهای مرتبط با ادمین دیتابیس به من این امکان را می‌دهد که پایگاه‌های داده را به‌صورت کارآمد و ایمن مدیریت کنم و مشکلات عملکردی را شناسایی و حل کنم. </div>
-										<div class="alx-services__item__opacityicon"><i class="fa fa-diamond"></i></div>
-									</div>
-								</div>
-								<div class="alx-services__item">
-									<div class="alx-services__item__wrap">
-										<div class="alx-services__item__main">
-											<i class="fa fa-feed"></i>
-											<h4 class="alx-services__item__title">مدیریت</h4>
-										</div>
-										<div class="alx-services__item__description">مدیریت توضیحات . </div>
-										<div class="alx-services__item__opacityicon"><i class="fa fa-feed"></i></div>
-									</div>
-								</div> *@
-							</div>
-							<div class="alx-services__container">
-								<div class="alx-services__item">
-									<div class="alx-services__item__wrap">
-										<div class="alx-services__item__main">
-											<i class="fa fa-wordpress"></i>
-											<h4 class="alx-services__item__title">وردپرس</h4>
-										</div>
-										<div class="alx-services__item__description">وردپرس توضیحات کامل. </div>
-										<div class="alx-services__item__opacityicon"><i class="fa fa-wordpress"></i></div>
-									</div>
-								</div>
-								<div class="alx-services__item">
-									<div class="alx-services__item__wrap">
-										<div class="alx-services__item__main">
-											<i class="fa fa-css3"></i>
-											<h4 class="alx-services__item__title">CSS&HTML</h4>
-										</div>
-										<div class="alx-services__item__description">css and html explanation توضیحات. </div>
-										<div class="alx-services__item__opacityicon"><i class="fa fa-css3"></i></div>
-									</div>
-								</div>
-								<div class="alx-services__item">
-									<div class="alx-services__item__wrap">
-										<div class="alx-services__item__main">
-											<i class="fa fa-opencart"></i>
-											<h4 class="alx-services__item__title">اپن کارت</h4>
-										</div>
-										<div class="alx-services__item__description"> توضیحات در مورد اپن کارت . </div>
-										<div class="alx-services__item__opacityicon"><i class="fa fa-opencart"></i></div>
-									</div>
-								</div>
-								<div class="alx-services__item">
-									<div class="alx-services__item__wrap">
-										<div class="alx-services__item__main">
-											<i class="fa fa-connectdevelop"></i>
-											<h4 class="alx-services__item__title">پشتیبانی</h4>
-										</div>
-										<div class="alx-services__item__description">توضیحات در مورد پشتیبانی و آماد. </div>
-										<div class="alx-services__item__opacityicon"><i class="fa fa-connectdevelop"></i></div>
-									</div>
-								</div>
-							</div>
+							}
+
 						</div>
 					</div>
 				</div>
