@@ -50,6 +50,13 @@ namespace Resume2.Controllers
 
             List<WebDocDetailsViewModel> docDetailsViewModels=webDocDetailsService.GetAllWebDocDetailsViewModel();
             ViewBag.DocD = docDetailsViewModels;
+            #region calculate of experience
+            int startYear = 1996;
+            int currentYear = DateTime.Now.Year;
+
+            int yearsOfExperience = currentYear - startYear;
+            ViewBag.exp_year = yearsOfExperience;
+            #endregion
 
             return View();
         }

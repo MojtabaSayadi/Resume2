@@ -52,6 +52,10 @@ namespace Resume2.Core.Services.Implementations
                     ImageName = webMainInfo.Avatar,
                     Major = webMainInfo.Major,
                     ShortDescription = webMainInfo.ShortDescription,
+                    Address = webMainInfo.Address,
+                    Email = webMainInfo.Email,
+                    Phone_no = webMainInfo.Phone_no,
+                    ResumeImge = webMainInfo.ResumeImge
                 };
                 return result;
 

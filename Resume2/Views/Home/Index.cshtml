@@ -98,7 +98,7 @@
 					<div class="col-lg-6 order-lg-12">
 						<div class="alx-person-image alx-dots-style">
 							<img class="img-responsive alx-tilt" src="image/@myinfo.ImageName" alt="">
-							<h3 class="alx-person-image__title alx-text-center">6 سال تجربه کاری</h3>
+							<h3 class="alx-person-image__title alx-text-center">@ViewBag.exp_year سال تجربه کاری</h3>
 						</div>
 					</div>
 					<div class="col-lg-6 alx-style" data-style="margin: 50px 0">
@@ -112,8 +112,8 @@
 								</svg>
 							</div>
 							<div class="alx-heading__description">@myinfo.AboutMe </div>
-							<div class="alx-heading__pretitle alx-style" data-style="margin-top: 20px"><i class="fa fa-diamond"></i>کارهای با کیفیت بالا و استاندارد های جهانی</div>
-						</div><a class="alx-btn alx-btn-primary" href="#page9">مشتری من شو !</a>
+							<div class="alx-heading__pretitle alx-style" data-style="margin-top: 20px"></div>
+						</div><a class="alx-btn alx-btn-primary"download href="/resume/@myinfo.ResumeImge">دانلود رزومه  </a>
 					</div>
 				</div>
 			</div>
@@ -121,21 +121,19 @@
 		<section class="alx-vertical-middle pp-scrollable alx-bg-img" data-image="/TemplateFile/images/bg2.jpg" data-tooltipsection="Second screen">
 			<div class="container">
 				<div class="row align-items-center">
-					<div class="col-lg-5 alx-style" data-style="margin: 50px 0">
-						<div class="alx-heading">
-							<div class="alx-heading__pretitle"><i class="fa fa-diamond"></i>تخصص های من</div>
-							<h2 class="alx-heading__title">بهترین خدمات من</h2>
-							<div class="alx-heading__zigzag">
-								<svg x="0px" y="0px" viewBox="0 0 100 19.5">
-									<g>
-										<polygon points="79.3,18 69.6,8.3 60,18 50.3,8.3 40.6,18 31,8.3 21.3,18 11.7,8.3 3.4,16.5 0.6,13.7 11.7,2.7 21.3,12.3 31,2.7 								40.6,12.3 50.3,2.7 60,12.3 69.6,2.7 79.3,12.3 88.9,2.7 100,13.6 97.2,16.4 89,8.3 "></polygon>
-									</g>
-								</svg>
-							</div>
-							<div class="alx-heading__description">آشنایی کامل با ابزارها و فرآیندهای مرتبط با ادمین دیتابیس به من این امکان را می‌دهد که پایگاه‌های داده را به‌صورت کارآمد و ایمن مدیریت کنم و مشکلات عملکردی را شناسایی و حل کنم</div>
-						</div><a class="alx-btn" href="#page9">شروع یک پروژه</a>
+					<div class="alx-heading">
+						
+						<h2 class="alx-heading__title"> خدمات من</h2>
+						<div class="alx-heading__zigzag">
+							<svg x="0px" y="0px" viewBox="0 0 100 19.5">
+								<g>
+									<polygon points="79.3,18 69.6,8.3 60,18 50.3,8.3 40.6,18 31,8.3 21.3,18 11.7,8.3 3.4,16.5 0.6,13.7 11.7,2.7 21.3,12.3 31,2.7 								40.6,12.3 50.3,2.7 60,12.3 69.6,2.7 79.3,12.3 88.9,2.7 100,13.6 97.2,16.4 89,8.3 "></polygon>
+								</g>
+							</svg>
+						</div>
 					</div>
-					<div class="col-lg-6 offset-lg-1">
+
+					<div class="col-lg-12">
 						<div class="alx-services alx-dots-style" data-interval="7000">
 							@if (services.Count() > 0)
 							{
@@ -491,20 +489,20 @@
 							<div class="alx-icon__icon"><span><i class="fa fa-phone"></i></span></div>
 							<div class="alx-icon__text">
 								<h5>تماس با من در هر زمان</h5>
-								<p>09123076670</p>
+								<p>@myinfo.Phone_no</p>
 							</div>
 						</div>
 						<div class="alx-icon">
 							<div class="alx-icon__icon"><span><i class="fa fa-envelope"></i></span></div>
 							<div class="alx-icon__text">
-								<h5>ایمیل من</h5><a href="mojtabasayadi1349@gmail.com">mojtabasayadi1349@gmail.com</a>
+								<h5>ایمیل من</h5><a href="mojtabasayadi1349@gmail.com">@myinfo.Email</a>
 							</div>
 						</div>
 						<div class="alx-icon">
 							<div class="alx-icon__icon"><span><i class="fa fa-home"></i></span></div>
 							<div class="alx-icon__text">
 								<h5>آدرس</h5>
-								<p>ایران، تهران ، تهرانسر</p>
+								<p>@myinfo.Address</p>
 							</div>
 						</div>
 					</div>

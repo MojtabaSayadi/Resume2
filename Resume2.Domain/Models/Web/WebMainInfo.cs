@@ -17,7 +17,6 @@ namespace Resume2.Domain.Models.Web
         [MaxLength(100, ErrorMessage = " name is too long")]
         public string Major { get; set; }
 
-
         [MaxLength(2000, ErrorMessage = " it is too long")]
         public string ShortDescription { get; set; }
 
@@ -26,6 +25,13 @@ namespace Resume2.Domain.Models.Web
 
         [MaxLength(5000, ErrorMessage = " it is too long")]
         public string AboutMe { get; set; }
+        [MaxLength(50, ErrorMessage = " it is too long")]
+        public string Email {  get; set; }
+        [MaxLength(20, ErrorMessage = " it is too long")]
+        public string Phone_no { get; set; }
+        [MaxLength(100, ErrorMessage = " it is too long")]
+        public string Address { get; set; }
+        public string ResumeImge {  get; set; }
        
     }
 }
