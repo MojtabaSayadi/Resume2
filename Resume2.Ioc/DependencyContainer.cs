@@ -36,6 +36,13 @@ namespace Resume2.Ioc
 
             services.AddScoped<IWebServicesRepository, WebServicesRepository>();
             services.AddScoped<IWebServicesService, WebServicesService>();
+
+            services.AddScoped<IWebProjectsRepository, WebProjectsRepository>();
+            services.AddScoped<IWebProjectsService, WebProjectsService>();
+
+            services.AddScoped<IWebBlogsRepository, WebBlogsRepository>();
+            services.AddScoped<IWebBlogsService, WebBlogsService>();
+
         }
     }
 }

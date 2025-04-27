@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Resume2.Core.Services.Implementations;
 using Resume2.Core.Services.Interfaces;
 using Resume2.Domain.Models.Web;
 using Resume2.Domain.ViewModels;
@@ -17,10 +18,11 @@ namespace Resume2.Controllers
         private IWebDocTypeService webDocTypeService;
         private IWebDocDetailsService webDocDetailsService;
         private IWebServicesService webServicesService;
+        private IWebProjectsService webProjectsService;
 
         public HomeController(IWebDocDetailsService _webDocDetailsService,IWebDocTypeService _webDocTypeService, IWebServicesService _webServicesService,
-            IWebSkillsService _webSkillsService, IWebSocialService  _webSocialService,
-            IWebMainInfoService _webMainInfoService,ILogger<HomeController> logger)
+            IWebSkillsService _webSkillsService, IWebSocialService  _webSocialService, IWebProjectsService _webProjectsService,
+        IWebMainInfoService _webMainInfoService,ILogger<HomeController> logger)
         {
             _logger = logger;
             webMainInfoService = _webMainInfoService;
@@ -29,6 +31,7 @@ namespace Resume2.Controllers
             webDocTypeService = _webDocTypeService;
             webDocDetailsService = _webDocDetailsService;
             webServicesService = _webServicesService;
+            webProjectsService = _webProjectsService;
         }
 
         public IActionResult Index()
@@ -57,6 +60,9 @@ namespace Resume2.Controllers
             int yearsOfExperience = currentYear - startYear;
             ViewBag.exp_year = yearsOfExperience;
             #endregion
+            List<WebProjects> MyProject = webProjectsService.GetWebProjects();
+            ViewBag.Projects = MyProject;
+                
 
             return View();
         }

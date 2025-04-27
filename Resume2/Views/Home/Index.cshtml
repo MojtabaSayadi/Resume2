@@ -7,6 +7,11 @@
 	List<WebServices> services = new List<WebServices>();
 	List<WebDocViewModel> docTypes = new List<WebDocViewModel>();
 	List<WebDocDetailsViewModel> docD = new List<WebDocDetailsViewModel>();
+	List<WebProjects> projects = new List<WebProjects>();
+	if (ViewBag.MyProject != null)
+	{
+		projects = ViewBag.MyProject as List<WebProjects>;
+	}
 
 	if (ViewBag.WebDoc != null)
 	{
@@ -113,7 +118,7 @@
 							</div>
 							<div class="alx-heading__description">@myinfo.AboutMe </div>
 							<div class="alx-heading__pretitle alx-style" data-style="margin-top: 20px"></div>
-						</div><a class="alx-btn alx-btn-primary"download href="/resume/@myinfo.ResumeImge">دانلود رزومه  </a>
+						</div><a class="alx-btn alx-btn-primary" download href="/resume/@myinfo.ResumeImge">دانلود رزومه  </a>
 					</div>
 				</div>
 			</div>
@@ -122,7 +127,7 @@
 			<div class="container">
 				<div class="row align-items-center">
 					<div class="alx-heading">
-						
+
 						<h2 class="alx-heading__title"> خدمات من</h2>
 						<div class="alx-heading__zigzag">
 							<svg x="0px" y="0px" viewBox="0 0 100 19.5">
@@ -159,7 +164,7 @@
 										</div>
 									}
 
-									
+
 								</div>
 							}
 
@@ -354,7 +359,7 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="alx-heading">
-							<h2 class="alx-heading__title">نظرات مشتریان</h2>
+							<h2 class="alx-heading__title"> پروژه های من </h2>
 							<div class="alx-heading__zigzag">
 								<svg x="0px" y="0px" viewBox="0 0 100 19.5">
 									<g>
@@ -366,43 +371,35 @@
 					</div>
 					<div class="alx-testimonials">
 						<div class="alx-testimonials__slides">
-							<div class="alx-testimonials__item">
-								<img src="~/templatefile/images/review1.jpg" alt="">
-								<div class="alx-testimonials__content">
-									<div class="alx-testimonials__item__review"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></div>
-									<div class="alx-testimonials__item__name">نازنین رافعی</div>
-									<div class="alx-testimonials__item__text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</div>
+							@foreach (var item in projects)
+							{
+
+								<div class="alx-testimonials__item">
+									<img src="~/image/project_logo/@item.ImageFile" alt="">
+									<div class="alx-testimonials__content">
+										<div class="alx-testimonials__item__review"></div>
+										<div class="alx-testimonials__item__name">@item.Title</div>
+										<div class="alx-testimonials__item__text">@item.Description</div>
+									</div>
 								</div>
-							</div>
-							<div class="alx-testimonials__item">
-								<img src="~/templatefile/images/review2.jpg" alt="">
-								<div class="alx-testimonials__content">
-									<div class="alx-testimonials__item__review"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
-									<div class="alx-testimonials__item__name">معین زارع</div>
-									<div class="alx-testimonials__item__text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</div>
+							}
+
+
+
+
+
+							<div class="alx-slider__nav">
+								<div class="alx-slider__nav__prev">
+									<div class="alx-slider__nav__next__icon"><i class="fa fa-angle-double-left"></i></div>
 								</div>
-							</div>
-							<div class="alx-testimonials__item">
-								<img src="~/templatefile/images/review3.jpg" alt="">
-								<div class="alx-testimonials__content">
-									<div class="alx-testimonials__item__review"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></div>
-									<div class="alx-testimonials__item__name">آرش خادم</div>
-									<div class="alx-testimonials__item__text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</div>
+								<div class="alx-slider__nav__dots"></div>
+								<div class="alx-slider__nav__next">
+									<div class="alx-slider__nav__next__icon"><i class="fa fa-angle-double-right"></i></div>
 								</div>
-							</div>
-						</div>
-						<div class="alx-slider__nav">
-							<div class="alx-slider__nav__prev">
-								<div class="alx-slider__nav__next__icon"><i class="fa fa-angle-double-left"></i></div>
-							</div>
-							<div class="alx-slider__nav__dots"></div>
-							<div class="alx-slider__nav__next">
-								<div class="alx-slider__nav__next__icon"><i class="fa fa-angle-double-right"></i></div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 		</section>
 		<section class="alx-vertical-middle alx-dark-section pp-scrollable alx-bg-img" data-image="/TemplateFile/images/bgd5.jpg">
 			<div class="container">

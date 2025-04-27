@@ -23,8 +23,10 @@ namespace Resume2.Data.Context
         public DbSet<WebSocial> webSocials { get; set; }
         public DbSet<WebSkills> webSkills { get; set; }
         public DbSet<WebDocType> webDocType { get; set; }
-        public DbSet<WebDocDetails> webDocDetails { get; set; }
+        public DbSet<WebDocDetails> webDocDetails { get; set; } 
         public DbSet<WebServices>   webServices { get; set; }
+        public DbSet<WebProjects> webProjects { get; set; }
+        public DbSet<WebBlogs> webBlogs { get; set; }
 
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -47,17 +47,17 @@ namespace Resume2.Data.Repositories
 
         public bool IsExist(int Id)
         {
-            throw new NotImplementedException();
+            return context.webDocType.Any(d => d.Id == Id);
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+            context.SaveChanges();
         }
 
         public void Update(WebDocType webDocType)
         {
-            throw new NotImplementedException();
+            context.webDocType.Update(webDocType);
         }
     }
 }
