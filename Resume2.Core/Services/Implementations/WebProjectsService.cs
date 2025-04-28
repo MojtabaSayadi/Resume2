@@ -12,8 +12,8 @@ namespace Resume2.Core.Services.Implementations
 {
     public class WebProjectsService :IWebProjectsService
     {
-        private WebProjectsRepository webProjectsRepository;
-        public WebProjectsService(WebProjectsRepository _webProjectsRepository)
+        private IWebProjectsRepository webProjectsRepository;
+        public WebProjectsService(IWebProjectsRepository _webProjectsRepository)
         {
             webProjectsRepository = _webProjectsRepository;
         }

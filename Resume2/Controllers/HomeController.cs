@@ -61,7 +61,7 @@ namespace Resume2.Controllers
             ViewBag.exp_year = yearsOfExperience;
             #endregion
             List<WebProjects> MyProject = webProjectsService.GetWebProjects();
-            ViewBag.Projects = MyProject;
+            ViewBag.MyProjects = MyProject;
                 
 
             return View();

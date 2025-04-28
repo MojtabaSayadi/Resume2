@@ -8,9 +8,9 @@
 	List<WebDocViewModel> docTypes = new List<WebDocViewModel>();
 	List<WebDocDetailsViewModel> docD = new List<WebDocDetailsViewModel>();
 	List<WebProjects> projects = new List<WebProjects>();
-	if (ViewBag.MyProject != null)
+	if (ViewBag.MyProjects != null)
 	{
-		projects = ViewBag.MyProject as List<WebProjects>;
+		projects = ViewBag.MyProjects as List<WebProjects>;
 	}
 
 	if (ViewBag.WebDoc != null)
@@ -378,26 +378,34 @@
 									<img src="~/image/project_logo/@item.ImageFile" alt="">
 									<div class="alx-testimonials__content">
 										<div class="alx-testimonials__item__review"></div>
-										<div class="alx-testimonials__item__name">@item.Title</div>
+										@if( string.IsNullOrEmpty(item.Url) )
+										{
+											<div class="alx-testimonials__item__name">@item.Title</div>
+										}
+										else{
+											<a href="@item.Url"  target="_blank">
+												<div class="alx-testimonials__item__name">@item.Title</div>
+											</a>
+										}
+										
 										<div class="alx-testimonials__item__text">@item.Description</div>
 									</div>
 								</div>
 							}
 
+							
+						</div>
 
-
-
-
-							<div class="alx-slider__nav">
-								<div class="alx-slider__nav__prev">
-									<div class="alx-slider__nav__next__icon"><i class="fa fa-angle-double-left"></i></div>
-								</div>
-								<div class="alx-slider__nav__dots"></div>
-								<div class="alx-slider__nav__next">
-									<div class="alx-slider__nav__next__icon"><i class="fa fa-angle-double-right"></i></div>
-								</div>
+						<div class="alx-slider__nav">
+							<div class="alx-slider__nav__prev">
+								<div class="alx-slider__nav__next__icon"><i class="fa fa-angle-double-left"></i></div>
+							</div>
+							<div class="alx-slider__nav__dots"></div>
+							<div class="alx-slider__nav__next">
+								<div class="alx-slider__nav__next__icon"><i class="fa fa-angle-double-right"></i></div>
 							</div>
 						</div>
+
 					</div>
 				</div>
 		</section>
