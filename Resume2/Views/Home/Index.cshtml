@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Resume2.Domain.ViewModels.WebDoc.ContactUs.Client
+@model WebContactUsViewModel
+@{
 	ViewData["Title"] = "Home Page";
 
 	MyInfoOnWebViewModel myinfo = new MyInfoOnWebViewModel();
@@ -11,7 +13,7 @@
 
 	List<WebBlogs> blogs = new List<WebBlogs>();
 
-	if(ViewBag.Blogs != null )
+	if (ViewBag.Blogs != null)
 	{
 		blogs = ViewBag.Blogs as List<WebBlogs>;
 	}
@@ -386,22 +388,23 @@
 									<img src="~/image/project_logo/@item.ImageFile" alt="">
 									<div class="alx-testimonials__content">
 										<div class="alx-testimonials__item__review"></div>
-										@if( string.IsNullOrEmpty(item.Url) )
+										@if (string.IsNullOrEmpty(item.Url))
 										{
 											<div class="alx-testimonials__item__name">@item.Title</div>
 										}
-										else{
-											<a href="@item.Url"  target="_blank">
+										else
+										{
+											<a href="@item.Url" target="_blank">
 												<div class="alx-testimonials__item__name">@item.Title</div>
 											</a>
 										}
-										
+
 										<div class="alx-testimonials__item__text">@item.Description</div>
 									</div>
 								</div>
 							}
 
-							
+
 						</div>
 
 						<div class="alx-slider__nav">
@@ -481,6 +484,9 @@
 			</div>
 
 		</section>
+
+
+		@* contact us *@
 		<section class="alx-vertical-middle pp-scrollable alx-bg-img" data-image="/TemplateFile/images/bgl5.jpg">
 			<div class="container">
 				<div class="row align-items-center">
@@ -521,22 +527,33 @@
 						</div>
 					</div>
 					<div class="col-lg-8">
-						<form class="alx-contact-form" action="#">
+						<form class="alx-contact-form" asp-action="Index" asp-controller="Home" method="post">
 							<div class="row">
 								<div class="col-lg-6">
 									<div class="alx-input-group">
-										<input name="name" type="text" required placeholder="نام شما *"><i class="fa fa-user-o"></i>
+										<input asp-for=Fullname placeholder="نام و نام خانوادگی شما *"><i class="fa fa-user-o"></i>
+									</div>
+									<div>
+										<span asp-validation-for="Fullname" style="color:red"></span>
 									</div>
 								</div>
 								<div class="col-lg-6">
 									<div class="alx-input-group">
-										<input name="email" type="email" required placeholder="ایمیل شما *"><i class="fa fa-at"></i>
+										<input asp-for=PhoneNumber placeholder="شماره تماس شما *"><i class="fa fa-at"></i>
+										<div>
+											<span asp-validation-for="PhoneNumber" style="color:red"></span>
+										</div>
 									</div>
 								</div>
 								<div class="col-lg-12">
 									<div class="alx-input-group">
-										<textarea name="message" rows="6" required placeholder="پیغام *"></textarea><i class="fa fa-commenting-o"></i>
+										<textarea asp-for="Message" rows="6" required placeholder="پیغام *"></textarea><i class="fa fa-commenting-o"></i>
 									</div>
+									<div>
+										<span asp-validation-for="Message" style="color:red"></span>
+									</div>
+
+
 									<div class="alx-success-msg hide">
 										<p>پیغام با موفقیت ارسال شد</p>
 									</div>
