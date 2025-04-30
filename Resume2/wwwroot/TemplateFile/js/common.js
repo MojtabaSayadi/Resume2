@@ -1,27 +1,27 @@
-"use strict";
-(function($) { 
+﻿"use strict";
+(function ($) {
 
-	$(window).on('load',function () {
+	$(window).on('load', function () {
 		$('#alx-preloader').delay(1000).fadeOut('slow');
 		alx_services_height($('.alx-services'));
-		
+
 	});
 
-	$(document).ready(function(){
+	$(document).ready(function () {
 
 		alx_dark_body($('#alx-pagepiling'));
 		/*-------------------------------------
 		Disable Vertical Align for Sections
 		-------------------------------------*/
-		$('section').each(function(){
+		$('section').each(function () {
 
 			var item = $(this).children('.container, .container-fluid').outerHeight(),
 				ths = $(this),
-				window_page = $(window).height()-100;
-			
+				window_page = $(window).height() - 100;
+
 			ths.children('.container, .container-fluid').css('height', +item);
-	
-			if(window_page < item){
+
+			if (window_page < item) {
 				ths.removeClass('alx-vertical-middle');
 			}
 		})
@@ -32,17 +32,17 @@
 	-------------------------------------*/
 	alx_skill(); // ---- Skills
 
-	
+
 	/*-------------------------------------
 		Drag images restagt
 	-------------------------------------*/
-	$('img, a').on('dragstart', function(event) { event.preventDefault(); });
+	$('img, a').on('dragstart', function (event) { event.preventDefault(); });
 
 	/*-------------------------------------
-	 	Burger
+		  Burger
 	 -------------------------------------*/
-	 $('.alx-burger').each(function(){
-		$(this).on('click', function(e){
+	$('.alx-burger').each(function () {
+		$(this).on('click', function (e) {
 			e.preventDefault();
 			$(this).toggleClass('on');
 		})
@@ -52,7 +52,7 @@
 	Particles
 	-------------------------------------*/
 
-	$('.alx-particles').each(function(){
+	$('.alx-particles').each(function () {
 
 		var ths = $(this),
 			dotsColor = $(this).attr('data-dotscolor'),
@@ -70,7 +70,7 @@
 	});
 
 	////
-	function alx_dark_body(index_var){
+	function alx_dark_body(index_var) {
 
 		//Dark section change body class
 		var section = index_var.find('.alx-dark-section');
@@ -78,20 +78,20 @@
 		var body = $('body'),
 			dark_class = 'alx-darked-wrap';
 
-			if( section.hasClass('active')){
-				body.addClass(dark_class);
-			}else{
-				body.removeClass(dark_class);
-			};
+		if (section.hasClass('active')) {
+			body.addClass(dark_class);
+		} else {
+			body.removeClass(dark_class);
+		};
 	}
 
 	/*-------------------------------------
-	 	Page Piling
+		  Page Piling
 	 -------------------------------------*/
-	 $(function (){
-		 var wrap = $('#alx-pagepiling');
+	$(function () {
+		var wrap = $('#alx-pagepiling');
 
-		 wrap.pagepiling({
+		wrap.pagepiling({
 			loopBottom: true,
 			scrollingSpeed: 200,
 			easing: 'Clip',
@@ -100,77 +100,77 @@
 			anchors: ['page1', 'page2', 'page3', 'page4', 'page5', 'page6', 'page7', 'page8', 'page9'],
 			verticalCentered: false,
 			sectionSelector: 'section',
-			onLeave: function(index, nextIndex, direction){
+			onLeave: function (index, nextIndex, direction) {
 				//Skills add class to activation anmation
 				$('.pp-section').find('.alx-skills').removeClass('alx-skill-viewport')
 				$('.pp-section.active').find('.alx-skills').addClass('alx-skill-viewport')
 
-				if($('.pp-section.active').find('.alx-skills').length){
+				if ($('.pp-section.active').find('.alx-skills').length) {
 					alx_skill();
-				}else{
+				} else {
 					$('.pp-section').find('.alx-skills').find('.alx-skills__bar').css('width', '0');
 				}
 
 				alx_dark_body(wrap);
-	
+
 			},
-			afterRender: function(){
+			afterRender: function () {
 				alx_dark_body($(wrap));
 			}
-			
+
 		});
 
-	
-	
+
+
 		//arrows
 		var up = $('.alx-pp-arrows-up'),
 			down = $('.alx-pp-arrows-down');
 
-		up.on('click', function(){
+		up.on('click', function () {
 			$.fn.pagepiling.moveSectionUp();
 		});
-		down.on('click', function(){
+		down.on('click', function () {
 			$.fn.pagepiling.moveSectionDown();
 		});
 
 	});
 
-	
+
 	/*-------------------------------------
 	 Portfolio control
 	 -------------------------------------*/
-	 $(function() {
+	$(function () {
 		if ($(".alx-portfolio-control").length) {
 			$('.alx-portfolio-control li').on('click', function () {
-		
+
 				var filter = $(this).attr('data-filter');
 				$('.alx-portfolio-control li').removeClass('alx-active');
 				$(this).addClass('alx-active');
-				
-				
+
+
 				$('.alx-layout-isotope').isotope({
 					filter: filter,
 					masonry: {
 						transitionDuration: '0.8s',
 						percentPosition: true,
 					}
-					
+
 				});
 				return false;
 			});
 		}
 	});
 
-	
+
 	/*-------------------------------------
 	 Masonry
 	 -------------------------------------*/
-	$(function(){
+	$(function () {
 
 		var section = $('.alx-layout-isotope');
 
 
-		section.imagesLoaded().done(function(){
+		section.imagesLoaded().done(function () {
 			section.isotope({
 				itemSelector: '.alx-isotope-item',
 				masonry: {
@@ -181,136 +181,177 @@
 			});
 		});
 
-		$(window).on('resize', function() {
+		$(window).on('resize', function () {
 			section.isotope();
 		}).trigger('resize');
 
 	});
 
 	$('.alx-img-gallery').magnificPopup({
-		type:'image',
+		type: 'image',
 		mainClass: 'mfp-fade',
-		gallery:{enabled:true}
+		gallery: { enabled: true }
 	});
 
 	/*-------------------------------------
 		E-mail Ajax Send
 	-------------------------------------*/
-	$('.alx-contact-form:nth-child(1n)').on('submit',function() {
-		var th = $(this);
-		$.ajax({
-			type: "POST",
-			url: "mail.php", //Change
-			data: th.serialize()
-		}).done(function() {
-			th.trigger("reset");
-			th.find('.alx-success-msg').slideToggle('slow');
-			setTimeout(function() {
-				// Done Functions
-				th.find('.alx-success-msg').slideToggle('hide');
-			}, 3000);
-		});
-		return false;
-	});
-	
+	//$('.alx-contact-form:nth-child(1n)').on('submit',function() {
+	//	var th = $(this);
+	//	$.ajax({
+	//		type: "POST",
+	//		url: "mail.php", //Change
+	//		data: th.serialize()
+	//	}).done(function() {
+	//		th.trigger("reset");
+	//		th.find('.alx-success-msg').slideToggle('slow');
+	//		setTimeout(function() {
+	//			// Done Functions
+	//			th.find('.alx-success-msg').slideToggle('hide');
+	//		}, 3000);
+	//	});
+	//	return false;
+	//});
+
 
 	/*-------------------------------------
 		Testimonials
 	-------------------------------------*/
-	$.fn.alx_testimonials = function() {
-        $(this).each(function() {
-            var $dots = $(this).find('.alx-slider__nav__dots');
-            var $arrows = $(this).find('.alx-slider__nav');
-            var $next = $arrows.children(".alx-slider__nav__next");
+	$.fn.alx_testimonials = function () {
+		$(this).each(function () {
+			var $dots = $(this).find('.alx-slider__nav__dots');
+			var $arrows = $(this).find('.alx-slider__nav');
+			var $next = $arrows.children(".alx-slider__nav__next");
 			var $prev = $arrows.children(".alx-slider__nav__prev");
-
 			var $slick_slider = $(this).children(".alx-testimonials__slides");
-			
-            $slick_slider.not('.slick-initialized').slick({
-                dots: true,
-                appendDots: $dots,
-                dotsClass: 'dots',
-                // autoplay: true,
-                autoHeight: true,
-                infinite: true,
-                cssEase: 'linear',
+
+			$slick_slider.not('.slick-initialized').slick({
+				dots: true,
+				appendDots: $dots,
+				dotsClass: 'dots',
+				autoHeight: true,
+				infinite: true,
+				cssEase: 'linear',
 				adaptiveHeight: true,
-				slidesToShow: 2,
-  				slidesToScroll: 1,
-                prevArrow: $prev,
+				slidesToShow: 3,
+				slidesToScroll: 1,
+				prevArrow: $prev,
 				nextArrow: $next,
-				customPaging : function(slider, i) {
-					var thumb = $(slider.$slides[i]).data(),
-						slides = i + 1;
-						if( i < 9 ){
-							return '<button>0'+slides+'</button>';
-						}else{
-							return '<button>'+slides+'</button>';
-						}
-					},
+				customPaging: function (slider, i) {
+					var slides = i + 1;
+					return i < 9 ? '<button>0' + slides + '</button>' : '<button>' + slides + '</button>';
+				},
 				responsive: [
 					{
 						breakpoint: 810,
-							settings: {
+						settings: {
 							slidesToShow: 1,
 							slidesToScroll: 1,
-							// infinite: false,
 							dots: true,
 							arrows: false
-
 						}
-					},
+					}
 				]
 			});
+		});
+	};
 
-        });
-    };
+	$.fn.alx_testimonials_my = function () {
+		$(this).each(function () {
+			var $dots = $(this).find('.alx-slider__nav_my__dots');
+			var $arrows = $(this).find('.alx-slider__nav_my');
+			var $next = $arrows.children(".alx-slider__nav_my__next");
+			var $prev = $arrows.children(".alx-slider__nav_my__prev");
+			var $slick_slider = $(this).children(".alx-testimonials__slides");
+
+			// محاسبه تعداد اسلایدها
+			var slideCount = $slick_slider.children().length;
+			var slidesToShow = slideCount > 3 ? 3 : slideCount;
+
+			// محدود کردن ارتفاع
+			$slick_slider.css({
+				maxHeight: '370px',
+				overflowY: 'auto'
+			});
+
+			$slick_slider.not('.slick-initialized').slick({
+				dots: true,
+				appendDots: $dots,
+				dotsClass: 'dots',
+				autoHeight: true,
+				infinite: true,
+				cssEase: 'linear',
+				adaptiveHeight: true,
+				slidesToShow: slidesToShow,
+				slidesToScroll: 2,
+				prevArrow: $prev,
+				nextArrow: $next,
+				customPaging: function (slider, i) {
+					var slides = i + 1;
+					return i < 9 ? '<button>0' + slides + '</button>' : '<button>' + slides + '</button>';
+				},
+				responsive: [
+					{
+						breakpoint: 810,
+						settings: {
+							slidesToShow: 1,
+							slidesToScroll: 1,
+							dots: true,
+							arrows: false
+						}
+					}
+				]
+			});
+		});
+	};
+
 
 	$('.alx-testimonials').alx_testimonials();
+	$('.alx-testimonials_my').alx_testimonials_my();
+
 
 	$('.alx-testimonials__item__text > p').readmore({
 		collapsedHeight: 60
 	});
 
-	
 
 	/*-------------------------------------
 		Skills
 	-------------------------------------*/
 	function alx_skill_viewport() {
-		$('.alx-skill-viewport').each(function(){
+		$('.alx-skill-viewport').each(function () {
 			var $ths_out = $(this).find('.alx-skills__body'),
 				$ths_in = $(this).find('.alx-skills__bar');
-	
-	
+
+
 			$ths_in.waypoint(function (dir) {
 				if (dir === "down") {
 					$ths_in.css('width', $ths_in.attr('data-skills'))
-	
+
 				}
 				else {
 					$ths_in.css('width', '0');
 				}
-				}, {
-					offset: "90%"
-				});
+			}, {
+				offset: "90%"
+			});
 		});
 	}
 	function alx_skill() {
-		$('.alx-skill-viewport').each(function(){
+		$('.alx-skill-viewport').each(function () {
 			var $ths_out = $(this).find('.alx-skills__body'),
 				$ths_in = $(this).find('.alx-skills__bar');
-				$ths_in.css('width', $ths_in.attr('data-skills'))
+			$ths_in.css('width', $ths_in.attr('data-skills'))
 		});
 	}
-	
-	
-	
-	
+
+
+
+
 	/*-------------------------------------
-	 	Side Bar
+		  Side Bar
 	 -------------------------------------*/
-	 $(function() {
+	$(function () {
 
 		var $toggleSidebar = $(".alx-burger"),
 			$body = $('body'),
@@ -320,14 +361,14 @@
 			$sidebarMnuLink = $('#alx-sidebar').children(".alx-sidebar-menu").find('a'),
 			$sedibarOpened = false;
 
-		function alx_sidebar_close(){
+		function alx_sidebar_close() {
 			$body.removeClass('alx-aside-sidebar__openoverlay');
 			$sidebar.removeClass('alx-aside-sidebar__open');
 			$toggleSidebar.removeClass('on');
 		}
 
-		$toggleSidebar.on('click', function(e) {
-			if(!$sedibarOpened){
+		$toggleSidebar.on('click', function (e) {
+			if (!$sedibarOpened) {
 				e.preventDefault();
 				$body.toggleClass('alx-aside-sidebar__openoverlay');
 				$sidebar.toggleClass('alx-aside-sidebar__open');
@@ -336,8 +377,8 @@
 			// return false;
 		});
 
-		$sidebarOverlay.on('click', function(e){
-			if($sedibarOpened) {
+		$sidebarOverlay.on('click', function (e) {
+			if ($sedibarOpened) {
 				e.preventDefault();
 				alx_sidebar_close();
 			}
@@ -347,41 +388,41 @@
 
 		// 	media close sidebar on click to link menu
 		if (window.matchMedia('(max-width: 767px)').matches) {
-			$sidebarMnuLink.on('click', function(e){
-				if($sedibarOpened) {
+			$sidebarMnuLink.on('click', function (e) {
+				if ($sedibarOpened) {
 					alx_sidebar_close();
 				}
 				$sedibarOpened = false;
 			});
 		}
-		
-		$sidebarClose.on('click', function(e) {
-			if($sedibarOpened) {
+
+		$sidebarClose.on('click', function (e) {
+			if ($sedibarOpened) {
 				e.preventDefault();
 				alx_sidebar_close();
 				$sedibarOpened = false;
 			}
 		});
-		
+
 	});
 
 	/*-------------------------------------
 	Inline styles
 	 -------------------------------------*/
-	$('.alx-style').each(function() {
+	$('.alx-style').each(function () {
 		var styles = $(this).attr('data-style');
-		if(styles){
-			$(this).attr('style', '' +styles);
+		if (styles) {
+			$(this).attr('style', '' + styles);
 		}
 	});
 
 	/*-------------------------------------
 	 Background function
 	 -------------------------------------*/
-	 $.fn.alx_background_image = function() {
-		$(this).each(function() {
+	$.fn.alx_background_image = function () {
+		$(this).each(function () {
 			var url = $(this).attr('data-image');
-			if(url){
+			if (url) {
 				$(this).css('background-image', 'url(' + url + ')');
 			}
 		});
@@ -392,67 +433,67 @@
 	Servisec changes
 	 -------------------------------------*/
 
-	$('.alx-services').each(function(){
+	$('.alx-services').each(function () {
 
 		var ths = $(this),
 			interval = ths.attr('data-interval');
 
 		ths.addClass('run');
-	
-		$(this).mouseover(function() {
+
+		$(this).mouseover(function () {
 			$(this).removeClass('run');
-		}).mouseout(function() {
+		}).mouseout(function () {
 			$(this).addClass('run');
 		});
 
 		alx_services_height(ths)
 
-		$(window).on('resize', function() {
+		$(window).on('resize', function () {
 			alx_services_height(ths)
 		}).trigger('resize');
-		
-	
-		
 
-	ths.find('.alx-services__container').eq(0).addClass('alx-active');
 
-	setInterval(blockAnimate, interval)
 
-	function blockAnimate() {
-		if(ths.hasClass('run')){
-			var length = ths.find('.alx-services__container').length - 1;
-			ths.find('.alx-services__container').each(function(index) {
-			if($(this).hasClass('alx-active') && index != length) {
-				$(this).removeClass('alx-active').next('.alx-services__container').addClass('alx-active');
-				return false;
-			} else if (index == length) {
-				$(this).removeClass('alx-active');
-				ths.find('.alx-services__container').eq(0).addClass('alx-active');
-				return false;
+
+		ths.find('.alx-services__container').eq(0).addClass('alx-active');
+
+		setInterval(blockAnimate, interval)
+
+		function blockAnimate() {
+			if (ths.hasClass('run')) {
+				var length = ths.find('.alx-services__container').length - 1;
+				ths.find('.alx-services__container').each(function (index) {
+					if ($(this).hasClass('alx-active') && index != length) {
+						$(this).removeClass('alx-active').next('.alx-services__container').addClass('alx-active');
+						return false;
+					} else if (index == length) {
+						$(this).removeClass('alx-active');
+						ths.find('.alx-services__container').eq(0).addClass('alx-active');
+						return false;
+					}
+				});
 			}
-		});
-		}
-		 
-	};
-		
+
+		};
+
 	});
 
 	/*-------------------------------------
-	 	MatchHeight
+		  MatchHeight
 	 -------------------------------------*/
-	 $('.alx-services__item__wrap').matchHeight({
+	$('.alx-services__item__wrap').matchHeight({
 		property: 'height'
 	});
 
 
 	/*-------------------------------------
-	 	Height css for services container
+		  Height css for services container
 	 -------------------------------------*/
 	function alx_services_height(container) {
-		container.each(function(){
+		container.each(function () {
 			var container = $(this),
 
-			height = container.find('.alx-services__container').outerHeight();
+				height = container.find('.alx-services__container').outerHeight();
 
 			container.css('height', + height)
 

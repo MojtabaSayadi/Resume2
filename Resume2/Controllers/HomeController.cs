@@ -19,10 +19,14 @@ namespace Resume2.Controllers
         private IWebDocDetailsService webDocDetailsService;
         private IWebServicesService webServicesService;
         private IWebProjectsService webProjectsService;
+        private IWebBlogsService webBlogsService;
 
-        public HomeController(IWebDocDetailsService _webDocDetailsService,IWebDocTypeService _webDocTypeService, IWebServicesService _webServicesService,
+        public HomeController(IWebDocDetailsService _webDocDetailsService,IWebDocTypeService _webDocTypeService,
+            IWebServicesService _webServicesService,
             IWebSkillsService _webSkillsService, IWebSocialService  _webSocialService, IWebProjectsService _webProjectsService,
-        IWebMainInfoService _webMainInfoService,ILogger<HomeController> logger)
+        IWebMainInfoService _webMainInfoService,
+        IWebBlogsService _webBlogsService,
+        ILogger<HomeController> logger)
         {
             _logger = logger;
             webMainInfoService = _webMainInfoService;
@@ -32,6 +36,7 @@ namespace Resume2.Controllers
             webDocDetailsService = _webDocDetailsService;
             webServicesService = _webServicesService;
             webProjectsService = _webProjectsService;
+            webBlogsService = _webBlogsService;
         }
 
         public IActionResult Index()
@@ -42,11 +47,17 @@ namespace Resume2.Controllers
             List<WebDocViewModel> list = webDocTypeService.GetAllWebDocTypeViewModel();
             ViewBag.WebDoc=list;
 
+            
+
             List<WebSocial> MySocial = webSocialService.GetWebSocials();
             ViewBag.Social = MySocial;
 
             List<WebServices> MyServices = webServicesService.GetWebServices();
             ViewBag.Services = MyServices;
+
+
+            List<WebBlogs> webBlogs = webBlogsService.GetWebBlogs();
+            ViewBag.Blogs = webBlogs;
 
             List<WebSkills> MySkills = webSkillsService.GetWebSkills();
             ViewBag.Skills = MySkills;

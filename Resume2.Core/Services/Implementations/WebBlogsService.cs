@@ -15,40 +15,41 @@ namespace Resume2.Core.Services.Implementations
 
     {
         
-        private IWebBlogsService webBlogsRepository;
+        private IWebBlogsRepository webBlogsRepository;
 
     
-        public WebBlogsService(IWebBlogsService _webBlogsRepository)
+        public WebBlogsService(IWebBlogsRepository _webBlogsRepository)
         {
             webBlogsRepository = _webBlogsRepository;
         }
 
         public void AddWebBlogs(WebBlogs webBlogs)
         {
-            webBlogsRepository.AddWebBlogs(webBlogs);
-            SaveWebBlogs();
+            webBlogsRepository.Add(webBlogs);
+                SaveWebBlogs();
         }
 
+        
+       
         public void DeleteWebBlogs(int id)
         {
-            webBlogsRepository.DeleteWebBlogs(GetWebBlogsById(id));
+            webBlogsRepository.Delete( GetWebBlogsById(id));
             SaveWebBlogs();
         }
 
         public void DeleteWebBlogs(WebBlogs webBlogs)
         {
-            webBlogsRepository.DeleteWebBlogs(webBlogs);
-            SaveWebBlogs();
+            webBlogsRepository.Delete(webBlogs);
         }
 
         public List<WebBlogs> GetWebBlogs()
         {
-            return webBlogsRepository.GetWebBlogs();
+            return webBlogsRepository.GetAll();
         }
 
         public WebBlogs GetWebBlogsById(int id)
         {
-            return webBlogsRepository.GetWebBlogsById(id);
+            return webBlogsRepository.GetById(id);
         }
 
         public bool IsExist(int Id)
@@ -58,12 +59,12 @@ namespace Resume2.Core.Services.Implementations
 
         public void SaveWebBlogs()
         {
-            webBlogsRepository.SaveWebBlogs();
+            webBlogsRepository.Save();
         }
 
         public void UpdateWebBlogs(WebBlogs webBlogs)
         {
-            webBlogsRepository.UpdateWebBlogs(webBlogs);
+            webBlogsRepository.Update(webBlogs);
             SaveWebBlogs();
         }
     }
