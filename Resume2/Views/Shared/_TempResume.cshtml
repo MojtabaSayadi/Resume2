@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="~/templatefile/libs/pagePiling/jquery.pagepiling.min.css">
     <link rel="stylesheet" href="~/templatefile/css/main.min.css">
     <link rel="stylesheet" href="~/templatefile/css/rtl.css">
-	
+	<link href="~/lib/sweetalert2/sweetalert2.css" rel="stylesheet" />
     <title> Mojtaba Sayadi Resume</title>
     <meta name="description" content="">
 </head>
@@ -76,5 +76,9 @@
 @*     <script src="~/templatefile/libs/fluidWave/fluidWave.js"></script> *@
     <!--Use scripts-->
 	<script src="~/templatefile/js/common.js"></script>
+	<script src="~/lib/sweetalert2/extended-ui-sweetalert2.js"></script>
+	<script src="~/lib/sweetalert2/sweetalert2.js"></script>
+
+    @RenderSection("script",false)
 </body>
 </html>

@@ -44,8 +44,11 @@ namespace Resume2.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(string message)
         {
+            if (!string.IsNullOrEmpty(message))
+                ViewBag.Message = message;
+
             MyInfoOnWebViewModel myinfo = webMainInfoService.GetWebInfoViewModel();
             ViewBag.WebInfo = myinfo;
 
@@ -90,7 +93,7 @@ namespace Resume2.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Index(WebContactUsViewModel model)
         {
-            #region Init
+            #region InitViewBags
             MyInfoOnWebViewModel myinfo = webMainInfoService.GetWebInfoViewModel();
             ViewBag.WebInfo = myinfo;
 
@@ -128,13 +131,14 @@ namespace Resume2.Controllers
 
 
 
+
             if (ModelState.IsValid)
             {
                 bool isPhoneNumber = true;
                 foreach (var item in model.PhoneNumber)
                 {
                     isPhoneNumber = int.TryParse(item.ToString(), out int result);
-                    if(isPhoneNumber==false)
+                    if (isPhoneNumber == false)
                         break;
                 }
 
@@ -149,8 +153,8 @@ namespace Resume2.Controllers
                         PhoneNumber = model.PhoneNumber,
                     };
                     webContactUsService.AddWebContactUs(webContactUs);
-                    return View(new WebContactUsViewModel());
-
+                    //return View(new WebContactUsViewModel());
+                    return RedirectToAction("Index", "Home",new {message="پیام شما با موفقیت دریافت شد"});
                 }
 
                 else

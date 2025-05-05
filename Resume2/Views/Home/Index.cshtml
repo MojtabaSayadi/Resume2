@@ -53,6 +53,12 @@
 	}
 
 }
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+	<input type="hidden" id="alert" value="@ViewBag.Message" />
+
+}
+
 
 <div class="alx-scroll-wrap">
 	<!--Content STARTs-->
@@ -577,3 +583,25 @@
 		<p><span>©</span>Gnusmas 2019</p>
 	</div>
 </div>
+
+@section script {
+	<script>
+		window.onload=function(){
+
+
+			 const hiddenInput = document.getElementById('alert');
+		 if (hiddenInput && hiddenInput.value.trim() !== '') {
+			 Swal.fire({
+			icon: 'success',
+			title: 'تبریک',
+			text: $("#alert").val(),
+			customClass: {
+				confirmButton: 'btn btn-success'
+			},
+			confirmButtonText: 'باشه'
+		});
+			 }
+
+		}();
+	</script>
+}
