@@ -4,10 +4,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Resume2.Domain.ViewModels.WebDoc.Security;
 
 namespace Resume2.Domain.ViewModels.WebDoc.ContactUs.Client
 {
-    public class WebContactUsViewModel
+    public class WebContactUsViewModel: ReCaptcha
     {
         [Required(ErrorMessage ="لطفا {0} خود را وارد کنید")]
         [Display(Name ="نام و نام خانوادگی")]

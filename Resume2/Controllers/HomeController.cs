@@ -1,12 +1,14 @@
 ﻿using System.Diagnostics;
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 using Resume2.Core.Services.Implementations;
 using Resume2.Core.Services.Interfaces;
 using Resume2.Domain.Models.Web;
 using Resume2.Domain.ViewModels;
 using Resume2.Domain.ViewModels.WebDoc.Client;
 using Resume2.Domain.ViewModels.WebDoc.ContactUs.Client;
+using Resume2.Domain.ViewModels.WebDoc.Security;
 using Resume2.Models;
 
 namespace Resume2.Controllers
@@ -23,13 +25,16 @@ namespace Resume2.Controllers
         private IWebProjectsService webProjectsService;
         private IWebBlogsService webBlogsService;
         private IWebContactUsService webContactUsService;
+        public IRecaptchaService  recaptchaService { get; set; }
+
         public HomeController(IWebDocDetailsService _webDocDetailsService, IWebDocTypeService _webDocTypeService,
             IWebServicesService _webServicesService,
             IWebSkillsService _webSkillsService, IWebSocialService _webSocialService, IWebProjectsService _webProjectsService,
         IWebMainInfoService _webMainInfoService,
         IWebBlogsService _webBlogsService,
         ILogger<HomeController> logger,
-        IWebContactUsService _webContactUsService)
+        IWebContactUsService _webContactUsService,
+        IRecaptchaService _recaptchaService)
         {
             _logger = logger;
             webMainInfoService = _webMainInfoService;
@@ -41,13 +46,17 @@ namespace Resume2.Controllers
             webProjectsService = _webProjectsService;
             webBlogsService = _webBlogsService;
             webContactUsService = _webContactUsService;
+            recaptchaService = _recaptchaService;
         }
 
         [HttpGet]
-        public IActionResult Index(string message)
+        public IActionResult Index(string? message,string? errmessage)
         {
             if (!string.IsNullOrEmpty(message))
                 ViewBag.Message = message;
+
+            if (!string.IsNullOrEmpty(errmessage))
+                ViewBag.errmessage = errmessage;
 
             MyInfoOnWebViewModel myinfo = webMainInfoService.GetWebInfoViewModel();
             ViewBag.WebInfo = myinfo;
@@ -81,6 +90,17 @@ namespace Resume2.Controllers
             #endregion
             List<WebProjects> MyProject = webProjectsService.GetWebProjects();
             ViewBag.MyProjects = MyProject;
+
+
+
+            #region GoogleRecapcha
+            GoogleRecapchaForViewViewModel tmp = new GoogleRecapchaForViewViewModel()
+            {
+                SiteKey = GoogleRecapchaViewModel.SiteKey
+            };
+
+            ViewData["SiteKey"] = tmp;
+            #endregion
 
 
             return View(new WebContactUsViewModel());
@@ -128,12 +148,25 @@ namespace Resume2.Controllers
             ViewBag.MyProjects = MyProject;
             #endregion
 
+            #region GoogleRecapcha
+            GoogleRecapchaForViewViewModel tmp = new GoogleRecapchaForViewViewModel()
+            {
+                SiteKey = GoogleRecapchaViewModel.SiteKey
+            };
 
+            ViewData["SiteKey"] = tmp;
+            #endregion
 
 
 
             if (ModelState.IsValid)
             {
+                if (!recaptchaService.ReCaptchaPassed(model.Token, GoogleRecapchaViewModel.SecretKey))
+                {
+                    string err = "لطفا مجددا صفحه را بارگزاری کنید.";
+                    return RedirectToAction("Index", "Home", new { errmessage = err });
+                }
+
                 bool isPhoneNumber = true;
                 foreach (var item in model.PhoneNumber)
                 {

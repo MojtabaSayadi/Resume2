@@ -1,5 +1,4 @@
-﻿@using Resume2.Domain.ViewModels.WebDoc.ContactUs.Client
-@model WebContactUsViewModel
+﻿@model WebContactUsViewModel
 @{
 	ViewData["Title"] = "Home Page";
 
@@ -51,6 +50,8 @@
 
 		services = ViewBag.Services as List<WebServices>;
 	}
+	GoogleRecapchaForViewViewModel tmp = ViewData["SiteKey"] as GoogleRecapchaForViewViewModel;
+
 
 }
 @if (!string.IsNullOrEmpty(ViewBag.Message))
@@ -58,7 +59,11 @@
 	<input type="hidden" id="alert" value="@ViewBag.Message" />
 
 }
+@if (!string.IsNullOrEmpty(ViewBag.errmessage))
+{
+	<input type="hidden" id="erralert" value="@ViewBag.errmessage" />
 
+}
 
 <div class="alx-scroll-wrap">
 	<!--Content STARTs-->
@@ -534,6 +539,7 @@
 					</div>
 					<div class="col-lg-8">
 						<form class="alx-contact-form" asp-action="Index" asp-controller="Home" method="post">
+							<partial name="_CaptchaInput" />
 							<div class="row">
 								<div class="col-lg-6">
 									<div class="alx-input-group">
@@ -590,7 +596,25 @@
 
 
 			 const hiddenInput = document.getElementById('alert');
-		 if (hiddenInput && hiddenInput.value.trim() !== '') {
+			 const hiddenInputerr = document.getElementById('erralert');
+
+		 if (hiddenInputerr && hiddenInputerr.value.trim() !== '') {
+
+				Swal.fire({
+			icon: 'error',
+			title: 'خطا',
+			text: $("#erralert").val(),
+			customClass: {
+				confirmButton: 'btn btn-error'
+			},
+			confirmButtonText: 'باشه'
+		});
+		 }
+
+
+
+
+			 if(hiddenInput && hiddenInput.value.trim() !== ''){
 			 Swal.fire({
 			icon: 'success',
 			title: 'تبریک',
@@ -604,4 +628,6 @@
 
 		}();
 	</script>
+
+	<partial name="_CaptchaScript" model="@tmp" />
 }

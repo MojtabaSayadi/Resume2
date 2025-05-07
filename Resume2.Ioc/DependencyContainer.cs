@@ -46,6 +46,7 @@ namespace Resume2.Ioc
             services.AddScoped<IWebContactUsRepository, WebContactUsRepository>();
             services.AddScoped<IWebContactUsService, WebContactUsService>();
 
+            services.AddScoped<IRecaptchaService, RecaptchaService>();
         }
     }
 }
