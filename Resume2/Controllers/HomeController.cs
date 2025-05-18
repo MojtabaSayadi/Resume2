@@ -1,6 +1,10 @@
 ﻿using System.Diagnostics;
 using System.Text.RegularExpressions;
+using IPE.SmsIrClient;
+using IPE.SmsIrClient.Models.Requests;
+using IPE.SmsIrClient.Models.Results;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Linq;
 using Resume2.Core.Services.Implementations;
 using Resume2.Core.Services.Interfaces;
@@ -26,6 +30,7 @@ namespace Resume2.Controllers
         private IWebBlogsService webBlogsService;
         private IWebContactUsService webContactUsService;
         public IRecaptchaService  recaptchaService { get; set; }
+        public IConfiguration configuration;
 
         public HomeController(IWebDocDetailsService _webDocDetailsService, IWebDocTypeService _webDocTypeService,
             IWebServicesService _webServicesService,
@@ -34,7 +39,11 @@ namespace Resume2.Controllers
         IWebBlogsService _webBlogsService,
         ILogger<HomeController> logger,
         IWebContactUsService _webContactUsService,
-        IRecaptchaService _recaptchaService)
+        IRecaptchaService _recaptchaService,
+        IConfiguration _configuration)
+            
+          
+
         {
             _logger = logger;
             webMainInfoService = _webMainInfoService;
@@ -47,6 +56,8 @@ namespace Resume2.Controllers
             webBlogsService = _webBlogsService;
             webContactUsService = _webContactUsService;
             recaptchaService = _recaptchaService;
+            configuration = _configuration;
+
         }
 
         [HttpGet]
@@ -111,7 +122,7 @@ namespace Resume2.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Index(WebContactUsViewModel model)
+        public async Task<IActionResult> Index(WebContactUsViewModel model)
         {
             #region InitViewBags
             MyInfoOnWebViewModel myinfo = webMainInfoService.GetWebInfoViewModel();
@@ -178,6 +189,34 @@ namespace Resume2.Controllers
 
                 if (isPhoneNumber)
                 {
+
+                    #region sms
+                    try
+                    {
+                        string smsAPiKey = configuration.GetValue<string>("SmsApi");
+                        SmsIr smsIr = new SmsIr(smsAPiKey);
+                        string mobile = model.PhoneNumber;
+                        int templateId = 328329;
+                        VerifySendParameter[] verifySendParameters = {
+                            new VerifySendParameter("NAME", model.Fullname),
+                         };
+                        var response = await smsIr.VerifySendAsync(mobile, templateId, verifySendParameters);
+
+                        VerifySendResult sendResult = response.Data;
+                        int messageId = sendResult.MessageId;
+                        decimal cost = sendResult.Cost;
+
+
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
+                    #endregion
+
+
+
                     WebContactUs webContactUs = new WebContactUs()
                     {
                         CreatedDate = DateTime.Now,
