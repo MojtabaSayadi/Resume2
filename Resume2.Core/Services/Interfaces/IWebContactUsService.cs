@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Resume2.Domain.Models.Auth;
 using Resume2.Domain.Models.Web;
+using Resume2.Domain.ViewModels.WebDoc.ContactUs.Admin;
 
 namespace Resume2.Core.Services.Interfaces
 {
@@ -12,6 +13,7 @@ namespace Resume2.Core.Services.Interfaces
     {
         WebContactUs GetWebContactUsById(int id);
         List<WebContactUs> GetWebContactUss();
+        List<AdminContactUsViewModel> GetAdminContactUs();
         bool IsExist(int Id);
         void AddWebContactUs(WebContactUs webContactUs);
         void UpdateWebContactUs(WebContactUs webContactUs);

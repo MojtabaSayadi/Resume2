@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Resume2.Core.extension;
 using Resume2.Core.Services.Interfaces;
 using Resume2.Domain.Interfaces;
 using Resume2.Domain.Models.Web;
+using Resume2.Domain.ViewModels;
+using Resume2.Domain.ViewModels.WebDoc.ContactUs.Admin;
+
 
 namespace Resume2.Core.Services.Implementations
 {
@@ -63,6 +67,28 @@ namespace Resume2.Core.Services.Implementations
         {
             webContactUsRepository.Update(webContactUs);
             SaveWebContactUs();
+        }
+
+        public List<AdminContactUsViewModel> GetAdminContactUs()
+        {
+            List<WebContactUs>  webContactUs = webContactUsRepository.GetAll();
+            if (webContactUs != null)
+            {
+                return webContactUs.Select(x => new AdminContactUsViewModel()
+                {
+                    Id = x.Id,
+                    CreatedDate = x.CreatedDate,
+                    Fullname = x.Fullname,
+                    Message = x.Message,
+                    PhoneNumber = x.PhoneNumber,
+                    CreatedDateS = x.CreatedDate.ToShamsi()
+                }).ToList();
+
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }
