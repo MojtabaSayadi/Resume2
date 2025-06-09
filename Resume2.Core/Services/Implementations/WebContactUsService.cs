@@ -81,7 +81,7 @@ namespace Resume2.Core.Services.Implementations
                     Fullname = x.Fullname,
                     Message = x.Message,
                     PhoneNumber = x.PhoneNumber,
-                    CreatedDateS = x.CreatedDate.ToShamsi()
+                    //CreatedDateS = x.CreatedDate.ToShamsi()
                 }).ToList();
 
             }
@@ -89,6 +89,11 @@ namespace Resume2.Core.Services.Implementations
             {
                 return null;
             }
+        }
+
+        public async Task<FilterAdminContactUsViewModel> GetAllMessage(FilterAdminContactUsViewModel filterAdminContactUs)
+        {
+           return await webContactUsRepository.GetAllMessage(filterAdminContactUs);
         }
     }
 }

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DomainLayer.Models.Common;
 
 namespace Resume2.Domain.ViewModels.WebDoc.ContactUs.Admin
 {
@@ -18,5 +19,9 @@ namespace Resume2.Domain.ViewModels.WebDoc.ContactUs.Admin
         public string Message { get; set; }
         public string CreatedDateS { get; set; }
         public DateTime CreatedDate { get; set; }
+    }
+    public class FilterAdminContactUsViewModel : Paging.BasePaging<AdminContactUsViewModel>
+    {
+
     }
 }

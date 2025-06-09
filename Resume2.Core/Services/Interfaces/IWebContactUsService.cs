@@ -20,5 +20,6 @@ namespace Resume2.Core.Services.Interfaces
         void DeleteWebContactUs(int id);
         void DeleteWebContactUss(WebContactUs webContactUs);
         void SaveWebContactUs();
+        Task<FilterAdminContactUsViewModel> GetAllMessage(FilterAdminContactUsViewModel filterAdminContactUs);
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Resume2.Domain.Models.Auth;
 using Resume2.Domain.Models.Web;
+using Resume2.Domain.ViewModels.WebDoc.ContactUs.Admin;
 
 namespace Resume2.Domain.Interfaces
 {
@@ -18,5 +19,7 @@ namespace Resume2.Domain.Interfaces
         void Delete(int id);// delete
         void Delete(WebContactUs webContactUs);
         void Save(); // commit
+
+        Task<FilterAdminContactUsViewModel> GetAllMessage(FilterAdminContactUsViewModel model);
     }
 }

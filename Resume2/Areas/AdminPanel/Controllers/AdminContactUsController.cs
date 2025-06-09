@@ -12,11 +12,11 @@ namespace Resume2.Areas.AdminPanel.Controllers
     {
         [HttpGet("AdminContactUs")]
 
-        public IActionResult AdminContactUs()
+        public async Task<IActionResult> ShowAdminContactUs(FilterAdminContactUsViewModel filter)
         {
-            List<AdminContactUsViewModel> List = webContactUsService.GetAdminContactUs();
-            
-            return View(List);
+            //List<AdminContactUsViewModel> List = webContactUsService.GetAdminContactUs();
+            FilterAdminContactUsViewModel model =await webContactUsService.GetAllMessage(filter);
+            return View(model);
         }
     }
 }
